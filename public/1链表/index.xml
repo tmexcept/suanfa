@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1链表s on My New Hugo Site</title>
+    <link>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/</link>
+    <description>Recent content in 1链表s on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>链表</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-1:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chapter 1&lt;/h3&gt;
+
+&lt;h1 id=&#34;链表:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;链表&lt;/h1&gt;
+
+&lt;p&gt;本章开始，我们将学习一些常见的数据结构。首先我们要掌握一种非常基础的数据结构&amp;mdash;-链表。在链表中的每个节点都包含其数据内容以及一个指向下一个元素的指针。我们可以通过这些指针来遍历链表。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>单链表</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/singlelist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/singlelist/</guid>
+      <description>
+
+&lt;h3 id=&#34;简介:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;简介&lt;/h3&gt;
+
+&lt;p&gt;单链表顾名思义就是一个链式数据结构，它有一个表头，并且除了最后一个节点外，所有节点都有其后继节点。如下图。
+&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/singleLinkedList.png&#34; alt=&#34;singleLinkedList&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;单链表的实现:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;单链表的实现&lt;/h3&gt;
+
+&lt;p&gt;本节我们用python来实现单链表。首先，我们写出链表节点的类。单链表中的每一个节点，都保存其数据域和后驱指针。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Node:
+    def __init__(self,val,next=None):
+        self.data = val
+        self.next = next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面我们写出单链表的基本框架，其中主要包括单链表的初始化函数，单链表的节点访问与修改，以及单链表的节点插入与删除。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class LinkedList:
+    def __init__(self, data=None):
+        pass
+
+    def __len__(self):
+        pass
+
+    def __getitem__(self, index):
+        pass
+
+    def __setitem__(self, index, value):
+        pass
+
+    def is_empty(self):
+        pass
+
+    def clear(self):
+        pass
+
+    def insert(self, index, data):
+        pass
+
+    def delete(self, index):
+        pass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先是初始化一个链表,传入一个list并将其所有元素依次串联成一个链表。
+注意，链表对象并不持有所有元素，它只保存了表头。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def __init__(self, data=None):
+    if data == None:
+        self.head = None
+    else:
+        self.head = Node(data[0])
+        p = self.head
+        for i in data[1:]:
+            node = Node(i)
+            p.next = node
+            p = p.next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;想要知道链表有多长？你必须遍历单链表，时间复杂度为&lt;code&gt;$O(n)$&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def __len__(self):
+    if self.head is None:
+        return 0
+    p = self.head
+    result = 0
+    while p != None:
+        p = p.next
+        result += 1
+    return result
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;判断链表是否为空，以及清空链表，都非常简单&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def is_empty(self):
+    return self.head == None
+
+def clear(self):
+    self.head = None
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;想要索引单链表怎么办,还是得从头一个一个数过去&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def __getitem__(self, index):
+    if index &amp;lt; 0 or index &amp;gt;= len(self):
+        return None
+    if self.head is None:
+        return None
+    p = self.head
+    j = 0
+    while j &amp;lt; index:
+        p = p.next
+        j += 1
+    return p.data
+
+def __setitem__(self, index, value):
+    if index &amp;lt; 0 or index &amp;gt;= len(self):
+        return
+    if self.head is None:
+        return
+    p = self.head
+    j = 0
+    while j &amp;lt; index:
+        p = p.next
+        j += 1
+    p.data = value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;链表中还有两个特别重要的方法，插入和删除。插入需要找到插入的位置，把前一个元素的next指针指向被插入的节点，并将被插入节点的next指针指向后一个节点，如下图左侧所示。而删除则是把前一个节点的next指针指向后一个节点，并返回被删除元素的数据内容，如下图右侧所示。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/insert_delete.png&#34; alt=&#34;insert_delete&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def insert(self, index, data):
+    if data is None:
+        return
+    if index &amp;lt; 0 or index &amp;gt; len(self):
+        return
+
+    if index == 0:
+        q = Node(data, self.head)
+        self.head = q
+        return
+
+    p = self.head
+    post = self.head
+    j = 0
+    while j &amp;lt; index:
+        post = p
+        p = p.next
+        j += 1
+        if index == j:
+            q = Node(data, p)
+            post.next = q
+
+
+def delete(self, index):
+    if index &amp;lt; 0 or index &amp;gt;= len(self):
+        return None
+    if self.head is None:
+        return None
+    if index == 0:
+        result = self.head.data
+        self.head = self.head.next
+        return result
+    p = self.head
+    j = 0
+    while j &amp;lt; index-1:
+        p = p.next
+        j += 1
+    result = p.next.data
+    p.next = p.next.next
+    return result
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>双向链表</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/dlist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/dlist/</guid>
+      <description>&lt;p&gt;双向链表和单链表不同之处在于，链表中的每一个节点，都保存其数据域和前/后驱指针。这就意味着如果你想删除链表的最后一个元素，你不需要从表头开始遍历到最后一个元素了。你可以直接从表尾开始直接删除这个元素。显然，双向链表在效率上要高于单链表，不过其数据结构更复杂，占用了更多的空间。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/dlinkedlist.pngpwd&#34; alt=&#34;DlinkedList&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;首先我们来定义节点。包含数据以及prev/next两个指针&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Node:
+    def __init__(self,data,next=None,prev=None):
+        self.data = data
+        self.next = next
+        self.prev = prev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面我们还是写出基本框架&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class DlinkedList:
+
+    def __init__(self,datas=None):
+        pass
+    def __len__(self):
+        pass
+    def is_empty(self):
+        pass
+    def clear(self):
+        pass
+    def insert(self):
+        pass
+    def delete(self):
+        pass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先我们写出初始化函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def __init__(self,datas=None):
+
+    if datas is None:
+        self.head = None
+        self.tail = None
+        return
+
+    if len(datas) == 1:
+        node = Node(datas[0])
+        self.head = node
+        self.tail = self.head
+        return
+
+    self.head = Node(datas[0])
+    self.tail = Node(datas[-1])
+    p = self.head
+
+    for data in datas[1:-1]:
+        q = Node(data)
+        p.next = q
+        p.next = q
+        q.prev = p
+
+    p.next = self.tail
+    self.tail.prev = p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;主要需要注意的是插入和删除，我们需要判断插入位置是靠近头还是尾&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def insert(self, index, data):
+
+    if data is None:
+        return
+
+    if index &amp;lt; 0 or index &amp;gt; len(self):
+        return
+
+    if self.is_empty() and index == 0:
+        q = Node(data)
+        self.head = q
+        self.tail = self.head
+        return
+
+    if index == 0:
+        q = Node(data, self.head, None)
+        self.head.prev = q
+        self.head = q
+        return
+
+    if index == len(self):
+        q = Node(data, None, self.tail)
+        self.tail.next = q
+        self.tail = q
+        return
+
+    if index &amp;lt;= len(self) / 2:
+        j = 0
+        p = self.head
+        post = self.head
+        while j &amp;lt; index:
+            post = p
+            p = p.next
+            j += 1
+        q = Node(data, p, post)
+        post.next = q
+        p.prev = q
+        return
+
+    if index &amp;gt; len(self) / 2:
+        j = len(self)
+        p = self.tail
+        post = self.tail
+        while j &amp;gt; index:
+            post = p
+            p = p.prev
+            j -= 1
+        q = Node(data, post, p)
+        post.prev = q
+        p.next = q
+
+
+def delete(self, index):
+
+    if index &amp;lt; 0 or index &amp;gt;= len(self):
+        return
+
+    if index == 0:
+		    result = self.head.data
+        self.head = self.head.next
+        return result
+
+    if index == len(self) - 1:
+        result = self.tail.data
+        self.tail = self.tail.prev
+        return result
+
+    if index &amp;lt;= len(self)/2:
+        j = 0
+        p = self.head
+        post = self.head
+        while j &amp;lt; index:
+            post = p
+            p = p.next
+            j += 1
+        post.next = p.next
+        p.next.prev = post
+        return p.data
+
+    if index &amp;gt; len(self)/2:
+        j = len(self)-1
+        p = self.tail
+        post = self.tail
+		    while j &amp;gt; index:
+            post = p
+            p = p.prev
+            j = j-1
+        post.prev = p.prev
+        p.prev.next = post
+        return p.data
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>常见问题</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/commonquestion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/commonquestion/</guid>
+      <description>
+
+&lt;p&gt;本节我们来学习面试中几个常见的链表问题&lt;/p&gt;
+
+&lt;h2 id=&#34;检测链表中是否有环:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;检测链表中是否有环&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/linked-list-cycle-ii/&#34;&gt;题目来源&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;基本思路：我们可以用两个指针从表头开始，一快一慢的遍历链表，快的一次走两步，慢的一次走一步。如果单链表有环，则不存在表尾(所有节点都有后继节点)，当指针进入环后，将在环里面一直转，两个指针由于一快一慢，快的指针必然会在某一个时刻&amp;rdquo;追上&amp;rdquo;慢的指针，两个指针达到同一个点。如下图中，快慢两个指针将在5-10这几个节点形成的环中进行追击，直到相遇。&lt;/p&gt;
+
+&lt;p&gt;所以，如果两个指针在出发后可以到达同一节点，我们就可以判断这个链表有环。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/circle.png&#34; alt=&#34;circle_detection&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+
+    def detectCycle(self, head):
+        try:
+            fast = head.next
+            slow = head
+            while fast is not slow:
+                fast = fast.next.next
+                slow = slow.next
+        except:
+            return None
+        # since fast starts at head.next, we need to move slow one step forward
+        slow = slow.next
+
+        while head is not slow:
+            head = head.next
+            slow = slow.next
+
+        return head
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;删除当前节点:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;删除当前节点&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/delete-node-in-a-linked-list/&#34;&gt;题目来源&lt;/a&gt;
+从前面的小节中我们已经得知，想要删除一个节点，需要把这个节点前驱节点的next指针知道其后面的节点。但是如下图，我们要删除&amp;rdquo;hello&amp;rdquo;节点，却不知道它的前驱节点的。笨办法是从链表头开始遍历找到待删除的节点。好的办法是，我们把当前节点的后继节点的数据域复制到当前节点，然后删掉后继节点。还是以下图为例，我们把第二个节点的数据域复制到第一个节点，然后删除第二个节点。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/delete_curr.png&#34; alt=&#34;delete_curr&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+
+    def deleteNode(self, node):
+        node.val = node.next.val
+        node.next = node.next.next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;删除从尾部数起第n个节点:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;删除从尾部数起第n个节点&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/remove-nth-node-from-end-of-list/&#34;&gt;题目来源&lt;/a&gt;
+我们没有办法从尾部开始遍历单链表，而且我们也不知道单链表的长度（除非我们遍历一次）。一个比较取巧的方法是用两个指针指向表头，一个先走n步，然后两个指针一起出发，当前面那个指针到达表尾的时候，后面那个指针正好处在待删除节点的前驱节点。下面就很简单啦。&lt;/p&gt;
+
+&lt;p&gt;以下图为例，我们想删除链表的倒数第二个节点。首先在表头设定两个指针p1,p2，并让p2先走两步，然后两个指针一同出发直到p2到达表尾。然后删除p1的后继节点（就是倒数第二个节点）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/delete_from_end.png&#34; alt=&#34;delete_from_end&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+
+    def removeNthFromEnd(self, head, n):
+
+        fast = slow = head
+
+        for _ in range(n):
+            fast = fast.next
+
+        if not fast:
+            return head.next
+
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        slow.next = slow.next.next
+        return head
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;合并两个有序列表:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;合并两个有序列表&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/merge-two-sorted-lists/&#34;&gt;题目来源&lt;/a&gt; 此题比较简单，就是不停遍历两个表，并操作指针移动。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+
+    def mergeTwoLists(self, l1, l2):
+        res = ListNode(0)
+        p = res
+
+        while l1 and l2:
+            if l1.val &amp;lt; l2.val:
+                p.next = l1
+                p = p.next
+                l1 = l1.next
+            else:
+                p.next = l2
+                p = p.next
+                l2 = l2.next
+
+        if not l1:
+            p.next = l2
+        if not l2:
+            p.next = l1
+
+        return res.next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;反转链表:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;反转链表&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/reverse-linked-list/&#34;&gt;题目来源&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一图胜千言。如下图，我们有一个四个节点的单链表，我们通过如下八步，并使用了三个指针来将其反转。其中2-4步和5-7步都可以被放入一个循环中。
+&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/reverse.png&#34; alt=&#34;reverse&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+
+    def reverseList(self, head):
+        if not head:
+            return None
+        if  not head.next:
+            return head
+
+        pre = head
+        cur = pre.next
+
+        while cur:
+            tmp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = tmp
+
+        head.next = None
+        return pre
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

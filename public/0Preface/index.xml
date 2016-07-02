@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>0Prefaces on My New Hugo Site</title>
+    <link>http://shrouded-inlet-85726.herokuapp.com/0preface/</link>
+    <description>Recent content in 0Prefaces on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://shrouded-inlet-85726.herokuapp.com/0preface/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Preface</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/0preface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/0preface/</guid>
+      <description>
+
+&lt;h3 id=&#34;preface:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Preface&lt;/h3&gt;
+
+&lt;h1 id=&#34;数据结构与算法设计:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;数据结构与算法设计&lt;/h1&gt;
+
+&lt;p&gt;这是一本关于数据结构和算法设计的电子书。本书1-5章内容为常见数据结构，后几章会介绍一些经典算法。并在最后讨论np难问题。如果您阅读本书后认为它对您有帮助，请给我捐款，来支持我写出更好的内容。当然，免费的东西未必不好，收费的也未必是好的内容。但是对于一名内容生产者来说，经济上的支持无疑能推动其写出更有价值的内容。如您单次捐款超过30元，您将获得会员资格并加入我们的微信讨论组（或telegram讨论组，可以同时加入或都不加）。会员还会收到我制作的数据结构与算法的cheatsheet一份,以及书中所有代码的集合。&lt;/p&gt;
+
+&lt;p&gt;本章将会介绍一些数据结构和算法方面的基本概念。&lt;/p&gt;
+
+&lt;p&gt;contact me：&lt;/p&gt;
+
+&lt;p&gt;email: chenmh@shanghaitech.edu.cn&lt;/p&gt;
+
+&lt;p&gt;weibo: &lt;a href=&#34;http://weibo.com/chenminhua91&#34;&gt;像一块滚石91&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>计算可解性</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/0preface/complexity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/0preface/complexity/</guid>
+      <description>
+
+&lt;p&gt;在设计算法的时候，我们需要考虑这样一个问题&amp;ndash;随着输入规模的增长，算法的时间成本和所占的空间数量会发生什么样的变化。
+在不同的应用场景下，我们会遇到不同的问题。所以没有最好的算法，只有最适合的算法。&lt;/p&gt;
+
+&lt;h3 id=&#34;什么是有效率的算法:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;什么是有效率的算法&lt;/h3&gt;
+
+&lt;p&gt;一个算法是否有效率，是和其输入样例密不可分的。假设我们需要设计一个排序算法，这个待排序的序列可能基本已经排序了，也可能完全处于混乱状态，同一个算法可能会有明显的效率差。我们需要一个关于有效的定义，它是一个与实例无关的定义。&lt;/p&gt;
+
+&lt;h3 id=&#34;多项式时间:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;多项式时间&lt;/h3&gt;
+
+&lt;p&gt;自然界中组合问题的搜索空间往往随输入规模成指数倍增长。就是说,如果输入规模加1，蛮力搜索的时间复杂度将成倍增加。假设我们有一个算法，使得当我们的输入规模为N时，其运行时间不超过 &lt;code&gt;$ cN^d $&lt;/code&gt; ，我们就说这个算法是一个多项式时间的算法。我们可以提出这样一个朴素的定义：&lt;strong&gt;如果一个算法有多项式运行时间，它就是有效的&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;如何更好地量化算法效率:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;如何更好地量化算法效率&lt;/h3&gt;
+
+&lt;p&gt;我们想以一种更简单的方式来表达运行时间。比如 &lt;code&gt;$ 1.6n^2 + 3n + 12 $&lt;/code&gt; ,随着输入规模的增大，低项对运行时间的影响会变得很低。而系数也不受输入规模的影响，所以我们可以用 &lt;code&gt;$ n^2 $&lt;/code&gt; 来表示算法的时间复杂度。&lt;/p&gt;
+
+&lt;p&gt;这里我们引入 &lt;strong&gt;O(.)&lt;/strong&gt; 表达式来表示运行时间的上界。假设一个算法的最坏运行时间为&lt;code&gt;$ T(n) $&lt;/code&gt;,假设存在一个函数&lt;code&gt;$f(n)$&lt;/code&gt;，满足当n足够大时&lt;code&gt;$T(n) \leq c*f(n)$&lt;/code&gt; ，其中c为常数，那么我们就说f为T的上界，记作 &lt;code&gt;$ T(n) = O(f(n)) $&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;比如一个算法的运算时间的上界为&lt;code&gt;$T(n) = 100n^2 + 9999n + 2$&lt;/code&gt;，我们可以用&lt;code&gt;$O(n^2)$&lt;/code&gt;来表示其时间复杂度。&lt;/p&gt;
+
+&lt;p&gt;除了上界，我们还可以分析一个算法运行 &lt;strong&gt;下界&lt;/strong&gt; 。记作&lt;code&gt;$T(n)=\Omega(f(n))$&lt;/code&gt;,对于 &lt;code&gt;$T(n) = 100n^2 + 9999n + 2$&lt;/code&gt;，我们也可以用&lt;code&gt;$\Omega(n^2)$&lt;/code&gt;来表示其时间复杂度。&lt;/p&gt;
+
+&lt;p&gt;我们注意到上面的例子中&lt;code&gt;$T(n)$&lt;/code&gt;既是&lt;code&gt;$O(n^2)$&lt;/code&gt;也是&lt;code&gt;$\Omega(n^2)$&lt;/code&gt;，这时候我们可以引入&lt;code&gt;$\Theta()$&lt;/code&gt;表达式来表示&amp;rdquo;紧界&amp;rdquo;。如果一个函数&lt;code&gt;$T(n)$&lt;/code&gt;既是&lt;code&gt;$O(f(n))$&lt;/code&gt;又是&lt;code&gt;$\Omega(f(n))$&lt;/code&gt;我们就说&lt;code&gt;$T(n)=\Theta(f(n))$&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;常见时间复杂度:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;常见时间复杂度&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间复杂度&lt;/th&gt;
+&lt;th&gt;例子&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$O(logn)$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;二分搜索&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$O(n)$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;计算数组中最大数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$O(nlogn)$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;归并排序&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$O(n^2)$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;找最近邻点的蛮力算法&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;超出多项式时间&lt;/td&gt;
+&lt;td&gt;独立集问题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

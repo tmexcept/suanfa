@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>7图算法s on My New Hugo Site</title>
+    <link>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 7图算法s on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>图算法</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-7:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chapter 7&lt;/h3&gt;
+
+&lt;h1 id=&#34;图算法:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;图算法&lt;/h1&gt;
+
+&lt;p&gt;一个图&lt;code&gt;$G=(V,E)$&lt;/code&gt;由顶点集V和边集E。每一条边就是一个点对。如果点对是有序的，那么图就是有向图，否则就是无向图。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>图的表示</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/description/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/description/</guid>
+      <description>
+
+&lt;p&gt;图的表示有两种，邻接矩阵和邻接表。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch7/graph1.png&#34; alt=&#34;graph&#34; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;邻接矩阵&lt;/th&gt;
+&lt;th&gt;1&lt;/th&gt;
+&lt;th&gt;2&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;th&gt;4&lt;/th&gt;
+&lt;th&gt;5&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;18&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;邻接表&lt;/th&gt;
+&lt;th&gt;dest&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1,4,5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;邻接矩阵:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;邻接矩阵&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;indexCounter = 0
+
+class Graph:
+
+    def __init__(self, matrix=[]):
+        self.matrix = matrix
+
+    def createVertex(self, data):
+        size = len(self.matrix)
+        for row in self.matrix:
+            row.append(0)
+        self.matrix.append([0]*(size+1))
+        return Vertex(data)
+
+    def connect(self, source, dest, weight):
+        self.matrix[source.index][dest.index] = weight
+
+    def weightBetween(self, source, dest):
+        return self.matrix[source.index][dest.index]
+
+class Vertex:
+    def __init__(self, data):
+        global indexCounter
+        self.data = data
+        self.index = indexCounter
+        indexCounter += 1
+
+
+graph = Graph()
+v1 = graph.createVertex(1)
+v2 = graph.createVertex(2)
+v3 = graph.createVertex(3)
+v4 = graph.createVertex(4)
+v5 = graph.createVertex(5)
+graph.connect(v1, v2, 1.0)
+graph.connect(v4, v5, 3.0)
+print graph.matrix
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;邻接表:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;邻接表&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Edge:
+    def __init__(self, source=None, dest=None, weight=0):
+        self.source = source
+        self.dest = dest
+        self.weight = weight
+
+class Vertex:
+    def __init__(self, data):
+        self.data = data
+        self.edges = []
+
+    def connectTo(self,dest,weight):
+        self.edges.append(Edge(source=self,dest=dest,weight=weight))
+
+    def connectBetween(self, dest, weight):
+        self.connectTo(dest, weight)
+        dest.connectTo(self, weight)
+
+    def isConnectedTo(self, dest):
+        for e in self.edges:
+            if e.dest == dest:
+                return True
+        return False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;图的拓扑排序:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;图的拓扑排序&lt;/h3&gt;
+
+&lt;p&gt;拓扑排序是对有向无环图的顶点的一种排序。如果存在一条从&lt;code&gt;$v_i$&lt;/code&gt;到&lt;code&gt;$v_j$&lt;/code&gt;的路径，那么在排序中&lt;code&gt;v_j就出现在v_i的后面&lt;/code&gt;。据此我们也可以得出，如果一个图有环，那么拓扑排序就不可能存在。求拓扑排序的算法是先找出任意一个没有入边的顶点，然后删除该点和从它发出的所有边。不断进行这一步骤直到取出所有顶点。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>最短路径算法</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/shortestpath/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/shortestpath/</guid>
+      <description>
+
+&lt;p&gt;我们有一个有权图G，并且有一个特定的顶点s作为出发点，需要计算s到G中其他顶点之间的最短路径。&lt;/p&gt;
+
+&lt;h3 id=&#34;dijkstra算法:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;dijkstra算法&lt;/h3&gt;
+
+&lt;p&gt;解决单源最短路径问题的一般方法叫做dijkstra算法。这个算法是贪婪算法的最好例子。贪婪算法一般分阶段去求解一个问题，在每个阶段都把出现的当做最好的处理。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch7/graph2.png&#34; alt=&#34;graph2&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;思路:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;思路&lt;/h3&gt;
+
+&lt;p&gt;首先我们给每个顶点维护三个特征：是否已知，到出发点的距离，路径（前驱节点）。我们从出发点开始，每次选择距离出发点最近（贪婪）的节点一个未知节点，将其变为已知。并更新其他未知节点到出发点的距离。&lt;/p&gt;
+
+&lt;h3 id=&#34;伪代码:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;伪代码&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;while True:
+  v &amp;lt;- 未知顶点中distance最小的。
+  if 没有未知顶点：
+    break
+  v.know = True
+
+  for 每个和v相邻的顶点w：
+    if w 未知：
+      if v.dist + c和w间的距离 &amp;lt; w.dist:
+        w.dist = v.dist + c和w间的距离
+        w.path = v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;实例:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;实例&lt;/h3&gt;
+
+&lt;p&gt;以上图为例，我们先建立一个初始表.这时候所有点都未知&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;首先我们选择V1作为出发点，从v1出发走一步可以到达v2和v4,我们更新这两个点的distance,并将它们的path设为v1.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$\infty$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;然后，我们选择v4（未知点中距离出发点最近）并标记为known，从v4出发可以到达v3,v5,v6,v7。更新这几个节点的distance，并将其path设为v4&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;接下来我们选择v2（v2,v3,v5都是最近，随便选一个），v2出发可以到达v4和v5,但是并没有缩短这两个点的distance，所以我们不更新这两个点。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;然后是v3,v3出发可以到v1和v6。原本到v1-v4-v6的距离为9，现在v1-v4-v3-v6的距离为8，所以我们更新v6&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;然后是v5,没啥可更新的&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;然后设置v7为known,v1-v4-v7-v6距离只有6，更新v6的distance和path。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;最后我们得到我们的结果&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;v&lt;/th&gt;
+&lt;th&gt;是否已知&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$d_v$&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;$p_v$&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_2$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_1$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_5$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_6$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_3$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$v_7$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$v_4$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;代码实现:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;代码实现&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;MAX_NUM = 1000000
+import copy
+class Edge:
+	def __init__(self, neighbour=None, distance=MAX_NUM):
+		self.neighbour = neighbour
+		self.distance = distance
+
+class Vertex:
+	def __init__(self,label=None):
+		self.neighbours = []
+		self.visited = False
+		self.label =label
+		self.path = None
+
+class Graph:
+	def __init__(self):
+		self.vertexs = []
+		self.edges = []
+
+	def addVertex(self, label):
+		vertex = Vertex(label)
+		self.vertexs.append(vertex)
+		return vertex
+
+	def addEdge(self, source, dest, weight):
+		edge = Edge(dest, weight)
+		source.neighbours.append(edge)
+
+def dijkstra(graph, source):
+	for vertex in graph.vertexs:
+		vertex.dist = MAX_NUM
+		vertex.known = False
+	source.dist = 0
+	while True:
+		#smallest unknown distance vertex
+		min_dist = MAX_NUM
+		v = Vertex()
+		for node in graph.vertexs:
+			if node.known == False and node.dist &amp;lt; min_dist:
+				min_dist = node.dist
+				v = node
+
+		if not v.label:
+			break
+		v.known = True
+
+		for edge in v.neighbours:
+			if not edge.neighbour.known:
+				if v.dist + edge.distance &amp;lt; edge.neighbour.dist:
+					edge.neighbour.dist = v.dist + edge.distance
+					edge.neighbour.path = v
+
+
+def print_path(v):
+	if v.path:
+		print_path(v.path)
+	print v.label
+
+
+from nose.tools import assert_equal
+
+def test():
+	graph = Graph()
+	nodeA = graph.addVertex(&#39;A&#39;)
+	nodeB = graph.addVertex(&#39;B&#39;)
+	nodeC = graph.addVertex(&#39;C&#39;)
+	nodeD = graph.addVertex(&#39;D&#39;)
+	nodeE = graph.addVertex(&#39;E&#39;)
+	nodeF = graph.addVertex(&#39;F&#39;)
+
+	graph.addEdge(nodeA, nodeB, 6)
+	graph.addEdge(nodeA, nodeC, 3)
+	graph.addEdge(nodeB, nodeC, 2)
+	graph.addEdge(nodeB, nodeD, 5)
+	graph.addEdge(nodeC, nodeD, 3)
+	graph.addEdge(nodeC, nodeE, 4)
+	graph.addEdge(nodeD, nodeE, 2)
+	graph.addEdge(nodeD, nodeF, 3)
+	graph.addEdge(nodeE, nodeF, 5)
+
+	dijkstra(graph, nodeA)
+
+	assert_equal(nodeA.dist,0)
+	assert_equal(nodeB.dist,6)
+	assert_equal(nodeC.dist,3)
+	assert_equal(nodeD.dist,6)
+	assert_equal(nodeE.dist,7)
+	assert_equal(nodeF.dist,9)
+
+	print &amp;quot;success&amp;quot;
+test()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>图的遍历</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/dfsandbfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/dfsandbfs/</guid>
+      <description>
+
+&lt;p&gt;The following steps are here to help you initialize your new website. If you don&amp;rsquo;t know Hugo at all, we strongly suggest you to train by following this &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;great documentation for beginners&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-your-project:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your project&lt;/h2&gt;
+
+&lt;p&gt;Hugo provides a &lt;code&gt;new&lt;/code&gt; command to create a new website.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site &amp;lt;new_project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;install-the-theme:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Install the theme&lt;/h2&gt;
+
+&lt;p&gt;Install the &lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; theme by following &lt;a href=&#34;https://gohugo.io/themes/installing/&#34;&gt;this documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The theme&amp;rsquo;s repository is: &lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn.git&#34;&gt;https://github.com/matcornic/hugo-theme-learn.git&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-configuration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Basic configuration&lt;/h2&gt;
+
+&lt;p&gt;When building the website, you can set a theme by using &lt;code&gt;--theme&lt;/code&gt; option. We suggest you to edit your configuration file and set the theme by default. Example with &lt;code&gt;config.toml&lt;/code&gt; format.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;theme = &amp;quot;hugo-theme-learn&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-your-first-chapter-page:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first chapter page&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; provides archetypes to create skeletons for your website. Begin by creating your first chapter page with the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new --kind chapter basics/index.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-your-first-content-pages:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first content pages&lt;/h2&gt;
+
+&lt;p&gt;Then, create content pages inside the previous chapter. Here are two ways to create content in the chapter :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new basics/first-content.md
+hugo new basics/second-content/index.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;launching-the-website:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Launching the website&lt;/h2&gt;
+
+&lt;p&gt;Launch the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo serve
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Go to &lt;code&gt;http://localhost:1313/basics&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are curious, at the home page (&lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;), you should see an empty homepage. It&amp;rsquo;s because this theme does not really provide a default homepage.&lt;/p&gt;
+
+&lt;p&gt;You typically have 2 choices :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create an &lt;a href=&#34;https://gohugo.io/templates/homepage/&#34;&gt;overview homepage&lt;/a&gt; for your project. Write an &lt;code&gt;index.html&lt;/code&gt; file in &lt;em&gt;layouts/&lt;/em&gt; folder.&lt;/li&gt;
+&lt;li&gt;Create a redirection to one your documentation page. Either by:
+
+&lt;ol&gt;
+&lt;li&gt;Configuring your server to automatically redirect homepage to one your documentation page - &lt;em&gt;Recommended&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Creating an empty html page with the following code in the head tag :&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0; url=http://example.com/&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/configuration/</link>
+      <pubDate>Sat, 09 Apr 2016 16:50:16 +0200</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/7%E5%9B%BE%E7%AE%97%E6%B3%95/configuration/</guid>
+      <description>
+
+&lt;h2 id=&#34;site-configuration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Site configuration&lt;/h2&gt;
+
+&lt;p&gt;On top of &lt;a href=&#34;https://gohugo.io/overview/configuration/&#34;&gt;Hugo global configuration&lt;/a&gt;, &lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; lets you define the following parameters :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[params]
+  # Prefix URL to edit current page. Useful to give opportunity to people to create merge request for your doc.
+  # See the config.toml file from this documentation site to have an example.
+  editURL = &amp;quot;&amp;quot;
+  # Author of the site, will be used in meta information
+  author = &amp;quot;&amp;quot;
+  # Description of the site, will be used in meta information
+  description = &amp;quot;&amp;quot;
+  # Shows a checkmark for visited pages on the menu. Default to false
+  showVisitedLinks = false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;notices tip&#34; &gt;&lt;p&gt;Assets are based on the root of the site. So, don&amp;rsquo;t forget to use Hugo built-in &lt;code&gt;canonifyURLs = true&lt;/code&gt; parameter if you set a &lt;code&gt;baseurl&lt;/code&gt; which includes a component path. Absolutely needed for Github pages like &lt;a href=&#34;http://userid.github.io/project&#34;&gt;http://userid.github.io/project&lt;/a&gt;. Find &lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn/issues/3&#34;&gt;More information&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;style-customization:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Style customization&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; has been built to be as configurable as possible by defining multiple &lt;a href=&#34;https://gohugo.io/templates/partials/&#34;&gt;partials&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In &lt;code&gt;themes/hugo-theme-learn/layouts/partials/&lt;/code&gt;, you will find all the partials defined for this theme. If you need to overwrite something, don&amp;rsquo;t change the code directly. Instead &lt;a href=&#34;https://gohugo.io/themes/customizing/&#34;&gt;follow this page&lt;/a&gt;. You&amp;rsquo;d create a new partial in the &lt;code&gt;layouts/partials&lt;/code&gt; folder of your local project. This partial will have the priority.&lt;/p&gt;
+
+&lt;p&gt;This theme defines the following partials :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;header&lt;/em&gt;: the header of the content page (contains the breadcrumbs)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;style&lt;/em&gt;: CSS imports, in case you want to override the style&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;footer&lt;/em&gt;: the footer of the content page (contains the arrows)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;script&lt;/em&gt;:  Javacript includes, in case you want to add Javascript on top of provided ones&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;favicon&lt;/em&gt;: the favicon&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;logo&lt;/em&gt;: the logo, on top left hand corner.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;meta&lt;/em&gt;: HTML meta tags, if you want to change default behavior&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;toc&lt;/em&gt;: table of contents&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;change-the-logo:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Change the logo&lt;/h3&gt;
+
+&lt;p&gt;Create a new file in &lt;code&gt;layouts/partials/&lt;/code&gt; named &lt;code&gt;logo.html&lt;/code&gt;. Then write any HTML you want.
+You could use an &lt;code&gt;img&lt;/code&gt; HTML tag and reference an image created under the &lt;em&gt;static&lt;/em&gt; folder, or you could paste a SVG definition !&lt;/p&gt;
+
+&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;The size of the logo will adapt automatically&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;h3 id=&#34;change-the-favicon:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Change the favicon&lt;/h3&gt;
+
+&lt;p&gt;If your favicon is a png, just drop off your image in your local &lt;code&gt;static/images/&lt;/code&gt; folder and names it &lt;code&gt;favicon.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you need to change this default behavior, create a new file in &lt;code&gt;layouts/partials/&lt;/code&gt; named &lt;code&gt;favicon.html&lt;/code&gt;. Then write something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;/images/favicon.png&amp;quot; type=&amp;quot;image/x-icon&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;change-default-colors:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Change default colors&lt;/h3&gt;
+
+&lt;p&gt;To change default colors, you will have to add a new css file. In order to do that :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a css file in your local &lt;code&gt;static/css/&lt;/code&gt; folder&lt;/li&gt;
+&lt;li&gt;Create a partial HTML in your local &lt;code&gt;layouts/partials/&lt;/code&gt; named &lt;code&gt;style.html&lt;/code&gt; and add the following line&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link href=&amp;quot;/css/yourfile.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, create CSS in the new file, overwriting default behavior. Don&amp;rsquo;t panic, we give you, just below, colors that are commonly changed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;/* background behind the logo*/
+#header {
+    background: &amp;lt;color&amp;gt;;
+    border-color: &amp;lt;color&amp;gt;;
+}
+
+/* Background color of the menu */
+#sidebar {
+  background-color: &amp;lt;color&amp;gt;;
+}
+
+/* Background color of the menu, when clicked */
+#sidebar ul.topics &amp;gt; li.parent, #sidebar ul.topics &amp;gt; li.active {
+  background-color: &amp;lt;color&amp;gt;;
+}
+
+/* Color of all links, including arrows to get to previous and next pages */
+a {
+    color: &amp;lt;color&amp;gt;;
+}
+a:hover {
+   color: &amp;lt;color&amp;gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

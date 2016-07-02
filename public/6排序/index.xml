@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>6排序s on My New Hugo Site</title>
+    <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/</link>
+    <description>Recent content in 6排序s on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>排序</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-1:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chapter 1&lt;/h3&gt;
+
+&lt;h1 id=&#34;排序算法:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;排序算法&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;算法&lt;/th&gt;
+&lt;th&gt;性能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;插入排序&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$O(N^2)$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;希尔排序&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$o(N^2)$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;堆排序&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$O(NlogN)$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;归并排序&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$O(NlogN)$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;快速排序&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;$O(NlogN)$&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>插入排序</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/insertsort/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/insertsort/</guid>
+      <description>
+
+&lt;p&gt;假设有这样一个序列32,14,43,22,56,41,插入排序需要执行N-1次。第p次排序后要保证第一个到第p+1个元素都是有序的。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;次数&lt;/th&gt;
+&lt;th&gt;数组&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;原始数组&lt;/td&gt;
+&lt;td&gt;32,14,43,22,56,41&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;第一次排序&lt;/td&gt;
+&lt;td&gt;14,32,43,22,56,41&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;第二次排序&lt;/td&gt;
+&lt;td&gt;14,32,43,22,56,41&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;第三次排序&lt;/td&gt;
+&lt;td&gt;14,22,32,43,56,41&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;第四次排序&lt;/td&gt;
+&lt;td&gt;14,22,32,41,43,56&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def insertionSort(l):
+    for i in range(1,len(l)):
+        tmp = l[i]
+        j = i
+        while j&amp;gt;0 and tmp &amp;lt; l[j-1]:
+            l[j] = l[j-1]
+            j -= 1
+        l[j] = tmp
+
+#测试
+import random
+a = [random.random() for i in range(40)]
+insertionSort(a)
+print a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;性能分析:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;性能分析&lt;/h2&gt;
+
+&lt;p&gt;插入排序的性能比较糟糕,时间复杂度为&lt;code&gt;$O(N^2)$&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>希尔排序</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/shellsort/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/shellsort/</guid>
+      <description>
+
+&lt;p&gt;希尔排序是冲破二次时间屏障的第一批算法。它通过比较相距一定间隔的元素来工作，且各趟比较所用的距离随着算法的进行而减小。所以希尔排序有时候也叫缩减增量排序。&lt;/p&gt;
+
+&lt;p&gt;我们还是举一个例子来分析,假设有一个数组 81,99,12,33,43,23,48,76,68,11,25,87,90。每一步，我们都设定一个增量，并根据增量将数组分组，并对每一个分组进行插入排序。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运行步骤&lt;/th&gt;
+&lt;th&gt;结果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;原始序列&lt;/td&gt;
+&lt;td&gt;81  99  12  33  43  23  48  76  68  11  25  87  90&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;按5为距离&lt;/td&gt;
+&lt;td&gt;23  48  12  33  11  25  87  76  68  43  81  99  90&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;按3为距离&lt;/td&gt;
+&lt;td&gt;23  11  12  33  48  25  43  76  68  87  81  99  90&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;按1为距离&lt;/td&gt;
+&lt;td&gt;11  12  23  25  33  43  48  68  76  81  87  90  99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def insertSort(l, start, gap):
+    for i in range(start+gap, len(l), gap):
+        currentValue = l[i]
+        pos = i
+        while pos &amp;gt;= gap and l[pos-gap] &amp;gt; currentValue:
+            l[pos] = l[pos - gap]
+            pos -= gap
+        l[pos] = currentValue
+
+def shellSort(l):
+    sublistCount = len(l) / 2
+    while sublistCount&amp;gt;0:
+        for pos in range(sublistCount):
+            insertSort(l, pos, sublistCount)
+        sublistCount = sublistCount / 2
+
+#测试
+import random
+a = [random.random() for i in range(40)]
+print a
+shellSort(a)
+print a
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;性能分析:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;性能分析&lt;/h2&gt;
+
+&lt;p&gt;虽然希尔排序编程简单，但是，其运行时间的分析相当复杂。而且不同的增量选择方式对运行时间也有着明显的影响&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>堆排序</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/heapsort/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/heapsort/</guid>
+      <description>
+
+&lt;p&gt;在第四章中我们就学过了堆（优先队列）这种结构。假设我们有一个数组，我们可以将数组元素依次入堆。这样在出堆的时候元素就是有序的了。关于堆得实现可以查看第四章代码。我们也可以使用Python标准库中的heapq包。&lt;/p&gt;
+
+&lt;h2 id=&#34;heapq包:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;heapq包&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.python.org/2/library/heapq.html&#34;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#入堆
+heapq.heappush(heap,item)
+
+#出堆
+heapq.heappop(heap)
+
+#入堆一个元素并出堆一个元素
+heapq.heappushpop(heap,item)
+
+#把List变成一个堆
+heapq.heapify(x)
+
+#返回最大的n个元素
+heapq.nlargest(n, iterables)
+
+#返回最小的n个元素
+heapq.nsmallest(n, iterables)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>归并排序</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/mergesort/</link>
+      <pubDate>Sat, 09 Apr 2016 16:50:16 +0200</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/mergesort/</guid>
+      <description>&lt;p&gt;归并排序以O(NlogN)的最坏情形时间运行，而且所用的比较次数几乎是最优的。它是递归算法和分治算法的一个好例子。这个算法首先把序列分成两部分并分别排序再合并起来。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def mergesort(l):
+    if len(l) &amp;lt;=1:
+        return l
+    mid = len(l)/2
+        left = mergesort(l[:mid])
+        right = mergesort(l[mid:])
+    return merge(left, right)
+
+def merge(left, right):
+    res = []
+    while len(left) !=0 and len(right) != 0:
+        if left[0] &amp;lt; right[0]:
+            res.append(left.pop(0))
+        else:
+            res.append(right.pop(0))
+    res += left
+    res += right
+    return res
+
+#测试
+import random
+a = [random.random() for i in range(40)]
+print mergesort(a)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>快速排序</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/quicksort/</link>
+      <pubDate>Sat, 09 Apr 2016 16:50:16 +0200</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/6%E6%8E%92%E5%BA%8F/quicksort/</guid>
+      <description>&lt;p&gt;快速排序的平均运行时间是&lt;code&gt;$O(NlogN)$&lt;/code&gt;。但是其最坏情况可能达到&lt;code&gt;$O(N^2)$&lt;/code&gt;。我们需要选择一个元素作为pivot,然后把大于pivot的和小于pivot的分开为两个数组，并各自进行分类。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def q_sort(l):
+    if len(l) &amp;lt;= 1:
+        return l
+    pivot = l[0]
+    left = [x for x in l[1:] if x &amp;lt; pivot]
+    right = [x for x in l[1:] if x &amp;gt; pivot]
+    return q_sort(left) + [pivot] + q_sort(right)
+
+#测试
+import random
+a = [random.random() for i in range(40)]
+print q_sort(a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;快速排序也可以一行写出来&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;q_sort = lambda l : l if len(l) &amp;lt;= 1 else q_sort([x for x in l[1:] if x &amp;lt; l[0]]) + [l[0]] + q_sort([x for x in l[1:] if x &amp;gt; l[0]])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

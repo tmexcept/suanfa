@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3树s on My New Hugo Site</title>
+    <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/</link>
+    <description>Recent content in 3树s on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>树</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/</guid>
+      <description>
+
+&lt;h3 id=&#34;chapter-3:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chapter 3&lt;/h3&gt;
+
+&lt;h1 id=&#34;树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;树&lt;/h1&gt;
+
+&lt;p&gt;树结构和前面介绍的几种数据结构不同，它属于一种分支结构。树结构广泛存在于现实世界中，比如本书的目录结构，比如计算机的文件系统。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>二叉树</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/binarytree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/binarytree/</guid>
+      <description>
+
+&lt;p&gt;二叉树是一种非常常见常用（常考）的数据结构。二叉树的特点是每个节点最多有两个子女，分别称为左子女和右子女。下图就是一棵二叉树。节点1我们称作根节点。而4，5，6我们称作叶子节点。
+&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/binarytree.png&#34; alt=&#34;binarytree&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;二叉搜索树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;二叉搜索树&lt;/h2&gt;
+
+&lt;p&gt;二叉搜索树是二叉树的子集，其特点是对于树中的每一个节点，其左子树中的所有元素都比它小，右子树中的所有元素都比它大。如下图，左侧的就是一棵二叉搜索树;而右侧的则不是，因为节点9在根节点10的右子树上，但是其值却比10小.
+&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/bst1.png&#34; alt=&#34;bst&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;二叉搜索树的实现:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;二叉搜索树的实现&lt;/h2&gt;
+
+&lt;p&gt;首先我们写出树节点的类，它包含三个属性：数据，左子树，右子树&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Node:
+    def __init__(self, element, left=None, right=None):
+        self.element = element
+        self.left = left
+        self.right = right
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面我们写出二叉搜索树的基本框架&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class BinarySearchTree:
+    def __init__(self, root=None):
+        self.root = root  #初始化函数
+
+    def clear(self):
+        self.root = None  #清空树
+
+    def isEmpty(self):
+        return self.root == None  #判断树是否为空
+
+    def contain(self, x, node):
+        pass  #查找某元素
+
+    def findMin(self, node):
+        pass  #找最小元素
+
+    def findMax(self, node):
+        pass  #找最大元素
+
+    def insert(self, x, node):
+        pass  #插入一个元素
+
+    def remove(self, x, node):
+        pass  #删除一个元素
+
+    def print_tree(self, node):
+        pass  #中序遍历
+
+    def post_order_print_tree(self, node):
+        pass  #后序遍历
+
+    def pre_order_print_tree(self, node):
+        pass  #前序遍历
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;树的遍历:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;树的遍历&lt;/h2&gt;
+
+&lt;p&gt;树三种遍历方法:中序遍历，前序遍历和后序遍历。对于下面的树来说，
+前序遍历的结果为 3,8,10,13,16,18&lt;/p&gt;
+
+&lt;p&gt;中序遍历的结果为 10,8,3,16,13,18&lt;/p&gt;
+
+&lt;p&gt;后序遍历的结果为 18,16,13,10,8,3&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/bst2.png&#34; alt=&#34;bst2&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_tree(self, node):
+    if node != None:
+        self.print_tree(node.left)
+        print node.element
+        self.print_tree(node.right)
+
+def post_order_print_tree(self, node):
+    if node != None:
+        self.post_order_print_tree(node.left)
+        self.post_order_print_tree(node.right)
+        print node.element
+
+def pre_order_print_tree(self, node):
+    if node != None:
+        print node.element
+        self.pre_order_print_tree(node.left)
+        self.pre_order_print_tree(node.right)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面我们来写contain方法，查找一棵树里面是否存在某个节点。从根节点开始，如果待查找的值比当前节点大，我们就去当前节点右子树找，如果比当前节点小，我们就去当前节点的左子树去找，直到找到目标(返回True)或者找到叶子节点处仍没有找到(返回False)。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def contain(self, x, node):
+    if node is None:
+        return False
+    if x &amp;lt; node.element:
+        return self.contain(x, node.left)
+    elif x &amp;gt; node.element:
+        return self.contain(x, node.right)
+    else:
+        return True
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如何找到二叉搜索树中的最大值和最小值？最大值就是一直向右子树找过去直到叶子节点。而最小值则是一直向左子树找过去直到找到叶子节点。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def findMin(self, node):
+    if node == None:
+        return None
+    elif node.left == None:
+        return node
+    return self.findMin(node.left)
+
+
+def findMax(self, node):
+    if node == None:
+        return None
+    elif node.right == None:
+        return node
+    return self.findMax(node.right)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如何向二叉搜索树插入一个节点？以下图为例，我们要插入一个节点17,从根节点开始，17大于10，所以去右子树插入。17大于16，继续往右。来到18，17小于18所以往左。而18恰好没有左儿子，所以把17插在18的左侧。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/insert.png&#34; alt=&#34;bst2&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def insert(self, x, node):
+    #不考虑相同元素出现
+    if node == None:
+        return Node(x)
+    if x &amp;lt; node.element:
+        node.left = self.insert(x,node.left)
+    elif x &amp;gt; node.element:
+        node.right = self.insert(x,node.right)
+    return node
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;删除则稍微来的麻烦一点，假设我们要删除下图左侧的16，我们首先来到16这个节点，然后我们从右子树中找到一个最小的元素17（其必然是一个叶子节点），把这个叶子节点17替换到16的位置并将叶子节点删除。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/remove.png&#34; alt=&#34;remove&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def remove(self, x, node):
+    if node == None:
+        return node
+    if x &amp;lt; node.element:
+        node.left = self.remove(x, node.left)
+    elif x &amp;gt; node.element:
+        node.right = self.remove(x, node.right)
+    elif node.left != None and node.right != None:
+        node.element = self.findMin(node.right).element
+        node.right = self.remove(node.element, node.right)
+    else:
+        node = node.left if (node.left is not None) else node.right
+    return node
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;性能分析:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;性能分析&lt;/h2&gt;
+
+&lt;p&gt;二叉搜索树的查找，插入和删除的时间复杂度都和树高成正比，所以时间复杂度都是&lt;code&gt;$O(logn)$&lt;/code&gt;,其中n为节点数。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>avl树</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/avltree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/avltree/</guid>
+      <description>
+
+&lt;p&gt;前面我们介绍了二叉搜索树，并分析了其性能。但是，如果我们考虑一个极端情况。现在我们有一棵二叉搜索树，只包含根节点10，然后我们依次像其插入11,12,&amp;hellip;19。然后你会得到下面这个东西。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/longtree.png&#34; alt=&#34;longtree&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;显然，这个时候插入和删除的时间复杂度不再是&lt;code&gt;$O(logn)$&lt;/code&gt;了，而是&lt;code&gt;$O(n)$&lt;/code&gt;，为什么，因为这是一个披着二叉树皮的单链表啊。&lt;/p&gt;
+
+&lt;h2 id=&#34;avl树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;AVL树&lt;/h2&gt;
+
+&lt;p&gt;AVL树是带有平衡条件的二叉搜索树。其平衡条件为 &lt;strong&gt;每个节点的左子树和右子树的高度差最多为1&lt;/strong&gt;。下图中，左侧是一棵avl树，而右侧则不是。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/avl1.png&#34; alt=&#34;avl1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;对于一棵已经满足平衡条件的树来说，插入和删除操作可能会破坏其原本的平衡。为了让树满足平衡条件，我们需要在插入的时候做一些额外的工作来保证这棵树的平衡。我们可以通过 &lt;strong&gt;旋转&lt;/strong&gt; 来对树进行简单的修正。&lt;/p&gt;
+
+&lt;p&gt;首先我们强调这样一个事实：在插入完成后，只有那些从插入点到根节点的路径上的节点的平衡可能被改变。我们可以沿着这条路径上行到根节点。&lt;/p&gt;
+
+&lt;p&gt;我们可以把这种不平衡分为四种情况：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在左子树的左儿子上插入导致不平衡&lt;/li&gt;
+&lt;li&gt;在左子树的右儿子上插入导致不平衡&lt;/li&gt;
+&lt;li&gt;在右子树的右儿子上插入导致不平衡&lt;/li&gt;
+&lt;li&gt;在右儿子的左子树上插入导致不平衡&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;第一种情况和第三种情况类似，都需要做一次旋转来让树重新平衡。
+&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/rotate1.png&#34; alt=&#34;rotate1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第二种情况和第四种情况则可以归为一类，需要两次旋转
+&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch3/rotate2.png&#34; alt=&#34;rotate2&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;实现avl树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;实现AVL树&lt;/h2&gt;
+
+&lt;p&gt;首先我们要定义树的节点类&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class TreeNode:
+    &amp;quot;&amp;quot;&amp;quot;根节点的深度为1，叶子节点的高度为1，非叶子节点的高度为其子树高度的最大值加1&amp;quot;&amp;quot;&amp;quot;
+    def __init__(self, data, left=None, right=None, height=1):
+        self.data = data
+        self.left = left
+        self.right = right
+        self.height = height
+
+    def __str__(self):
+        return &amp;quot;tree node %s with height %d&amp;quot; % (self.data, self.height)
+
+def height(node):
+    return node.height if node else 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;avl树的关键在于四种旋转调整的方法。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class AVLTree:
+    def __init__(self, root=None):
+        self.root = root
+
+    def insertroot(self, data):
+        self.root = self.insert(data, self.root)
+
+    def insert(self, data=None, node=None):
+        if not node:
+            return TreeNode(data)
+        if data &amp;lt; node.data:
+            #插在左子树上
+            node.left = self.insert(data, node.left)
+            if (height(node.left) - height(node.right) == 2):
+                if data &amp;lt; node.left.data:
+                    node = self.rotateWithLeftChild(node)
+                else:
+                    node = self.doubleWithLeftChild(node)
+        else:
+            #插在右子树上
+            node.right = self.insert(data, node.right)
+            if (height(node.right) - height(node.left) == 2):
+                if data &amp;gt; node.right.data:
+                    node = self.rotateWithRightChild(node)
+                else:
+                    node = self.doubleWithRightChild(node)
+                    node.height = max(height(node.left), height(node.right)) + 1;
+        return node
+
+    def rotateWithLeftChild(self, k2):
+        k1 = k2.left
+        k2.left = k1.right
+        k1.right = k2
+        k2.height = max(height(k2.left), height(k2.right)) + 1
+        k1.height = max(height(k1.left), height(k2)) + 1
+        return k1
+
+    def doubleWithLeftChild(self, k3):
+        k3.left = self.rotateWithRightChild( k3.left );
+        return self.rotateWithLeftChild(k3);
+
+    def rotateWithRightChild(self, k1):
+        k2 = k1.right;
+        k1.right = k2.left;
+        k2.left = k1;
+        k1.height = max( height(k1.left), height(k1.right) ) + 1;
+        k2.height = max( height(k1), height(k2.right)) + 1;
+        return k2;
+
+    def doubleWithRightChild(self, k1):
+        k1.right = self.rotateWithLeftChild(k1.right);
+        return self.rotateWithRightChild(k1);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;images/magic.gif?classes=shadow&#34; alt=&#34;Magic&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>avl树</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/avl%E6%A0%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/avl%E6%A0%91/</guid>
+      <description>&lt;p&gt;Thanks to the simplicity of Hugo, this page is as empty as this theme needs requirements.&lt;/p&gt;
+
+&lt;p&gt;Just download &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;Hugo&lt;/a&gt; binary for your OS (Windows, Linux, Mac) : it&amp;rsquo;s that simple.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;images/magic.gif?classes=shadow&#34; alt=&#34;Magic&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>常见问题</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/commonquestion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/commonquestion/</guid>
+      <description>
+
+&lt;p&gt;The following steps are here to help you initialize your new website. If you don&amp;rsquo;t know Hugo at all, we strongly suggest you to train by following this &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;great documentation for beginners&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-your-project:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your project&lt;/h2&gt;
+
+&lt;p&gt;Hugo provides a &lt;code&gt;new&lt;/code&gt; command to create a new website.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site &amp;lt;new_project&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;install-the-theme:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Install the theme&lt;/h2&gt;
+
+&lt;p&gt;Install the &lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; theme by following &lt;a href=&#34;https://gohugo.io/themes/installing/&#34;&gt;this documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The theme&amp;rsquo;s repository is: &lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn.git&#34;&gt;https://github.com/matcornic/hugo-theme-learn.git&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-configuration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Basic configuration&lt;/h2&gt;
+
+&lt;p&gt;When building the website, you can set a theme by using &lt;code&gt;--theme&lt;/code&gt; option. We suggest you to edit your configuration file and set the theme by default. Example with &lt;code&gt;config.toml&lt;/code&gt; format.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;theme = &amp;quot;hugo-theme-learn&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-your-first-chapter-page:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first chapter page&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; provides archetypes to create skeletons for your website. Begin by creating your first chapter page with the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new --kind chapter basics/index.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-your-first-content-pages:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first content pages&lt;/h2&gt;
+
+&lt;p&gt;Then, create content pages inside the previous chapter. Here are two ways to create content in the chapter :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new basics/first-content.md
+hugo new basics/second-content/index.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;launching-the-website:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Launching the website&lt;/h2&gt;
+
+&lt;p&gt;Launch the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo serve
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Go to &lt;code&gt;http://localhost:1313/basics&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are curious, at the home page (&lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;), you should see an empty homepage. It&amp;rsquo;s because this theme does not really provide a default homepage.&lt;/p&gt;
+
+&lt;p&gt;You typically have 2 choices :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create an &lt;a href=&#34;https://gohugo.io/templates/homepage/&#34;&gt;overview homepage&lt;/a&gt; for your project. Write an &lt;code&gt;index.html&lt;/code&gt; file in &lt;em&gt;layouts/&lt;/em&gt; folder.&lt;/li&gt;
+&lt;li&gt;Create a redirection to one your documentation page. Either by:
+
+&lt;ol&gt;
+&lt;li&gt;Configuring your server to automatically redirect homepage to one your documentation page - &lt;em&gt;Recommended&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Creating an empty html page with the following code in the head tag :&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0; url=http://example.com/&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
