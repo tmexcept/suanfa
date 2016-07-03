@@ -151,7 +151,7 @@ def delete(self, index):
         j = len(self)-1
         p = self.tail
         post = self.tail
-		    while j > index:
+        while j > index:
             post = p
             p = p.prev
             j = j-1
