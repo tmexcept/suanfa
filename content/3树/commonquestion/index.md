@@ -6,66 +6,149 @@ weight: 15
 toc: true
 ---
 
-The following steps are here to help you initialize your new website. If you don't know Hugo at all, we strongly suggest you to train by following this [great documentation for beginners](https://gohugo.io/overview/quickstart/).
+## 判断两棵树是否为同一棵
+[leetcode 100题](https://leetcode.com/problems/same-tree/)
 
-## Create your project
-
-Hugo provides a `new` command to create a new website.
-
-```
-hugo new site <new_project>
-```
-
-## Install the theme
-
-Install the **Hugo-theme-learn** theme by following [this documentation](https://gohugo.io/themes/installing/)
-
-The theme's repository is: https://github.com/matcornic/hugo-theme-learn.git
-
-## Basic configuration
-
-When building the website, you can set a theme by using `--theme` option. We suggest you to edit your configuration file and set the theme by default. Example with `config.toml` format.
-
-```toml
-theme = "hugo-theme-learn"
+```python
+class Solution:
+    def isSameTree(self, p,q):
+        if not p or not q:
+            return p == q
+        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
 
-## Create your first chapter page
+## 判断一棵树是否为对称树
+[leetcode 101题](https://leetcode.com/problems/symmetric-tree/)
 
-**Hugo-theme-learn** provides archetypes to create skeletons for your website. Begin by creating your first chapter page with the following command
+```python
+class Solution(object):
+    def isSymmetric(self, root):
+        return self.isSym(root,root)
 
-```
-hugo new --kind chapter basics/index.md
-```
-
-## Create your first content pages
-
-Then, create content pages inside the previous chapter. Here are two ways to create content in the chapter :
-
-```
-hugo new basics/first-content.md
-hugo new basics/second-content/index.md
+    def isSym(self,p,q):
+        if not p and not q: return True
+        if p and q:
+            return p.val == q.val and self.isSym(p.left, q.right) and self.isSym(p.right,q.left)
+        return False
 ```
 
-## Launching the website
+## 求一棵树的最大深度
+[leetcode 104题](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
 
-Launch the following command
-
+```python
+class Solution(object):
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right))+1
 ```
-hugo serve
+
+## 求一棵树的最小深度
+[leetcode 111题](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
+
+```python
+class Solution(object):
+    def minDepth(self, root):
+        if not root:
+            return 0
+        if root.left==None or root.right==None:
+            return self.minDepth(root.left)+self.minDepth(root.right)+1
+        return min(self.minDepth(root.right),self.minDepth(root.left))+1
 ```
 
-Go to `http://localhost:1313/basics`
+## 判断一棵树是否为平衡二叉树
+[leetcode 110题](https://leetcode.com/problems/balanced-binary-tree/)
 
-If you are curious, at the home page (http://localhost:1313/), you should see an empty homepage. It's because this theme does not really provide a default homepage.
+```python
+class Solution(object):
+    def isBalanced(self, root):
+        if not root:
+            return True
+        return abs(self.getHeight(root.left) - self.getHeight(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
 
-You typically have 2 choices :
+    def getHeight(self, root):
+        if not root:
+            return 0
+        return max(self.getHeight(root.left), self.getHeight(root.right)) + 1
+```
 
-1. Create an [overview homepage](https://gohugo.io/templates/homepage/) for your project. Write an `index.html` file in *layouts/* folder.
-2. Create a redirection to one your documentation page. Either by:
-  1. Configuring your server to automatically redirect homepage to one your documentation page - *Recommended*
-  2. Creating an empty html page with the following code in the head tag :  
+## 二叉树的层序遍历
+[leetcode 102题](https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
-  ```html
-  <meta http-equiv="refresh" content="0; url=http://example.com/"/>
-  ```
+```python
+class Solution(object):
+    def levelOrder(self, root):
+        ans, level = [], [root]
+        while root and level:
+            ans.append([node.val for node in level])            
+            level = [kid for n in level for kid in (n.left, n.right) if kid]
+        return ans
+```
+
+## 从先序和中序重建二叉树
+[leetcode 105题](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+```python
+class Solution(object):
+    def buildTree(self, preorder, inorder):
+        if inorder:
+            ind = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[ind])
+            root.left = self.buildTree(preorder, inorder[0:ind])
+            root.right = self.buildTree(preorder, inorder[ind+1:])
+            return root
+```
+
+## 从后序和中序重建二叉树
+[leetcode 106题](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+
+```python
+class Solution(object):
+    def buildTree(self, inorder, postorder):
+        if inorder:
+            root = TreeNode(postorder.pop())
+            ind = inorder.index(root.val)
+            root.right = self.buildTree(inorder[ind+1:],postorder)
+            root.left = self.buildTree(inorder[:ind],postorder)
+            return root      
+```
+
+## path sum
+[leetcode 112题](https://leetcode.com/problems/path-sum/)
+
+```python
+class Solution(object):
+    def hasPathSum(self, root, sum):
+        if not root:
+            return False
+        if not root.left and not root.right and root.val == sum:
+            return True
+        return self.hasPathSum(root.left,sum-root.val) or self.hasPathSum(root.right, sum-root.val)
+```
+
+## path sum II
+[leetcode 113题](https://leetcode.com/problems/path-sum-ii/)
+
+```python
+class Solution(object):
+    def pathSum(self, root, sum):
+        res = []
+        self.helper(root,sum,[],res)
+        return res
+
+    def helper(self, root, sum, path, res):
+        if not root:
+            return
+        if root.val == sum and self.isleaf(root):
+            res.append(path+[sum])
+            return
+
+        self.helper(root.left, sum-root.val, path+[root.val],res)
+        self.helper(root.right, sum-root.val, path+[root.val],res)
+
+
+    def isleaf(self,root):
+        if root.left or root.right:
+            return False
+        return True
+```

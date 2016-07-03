@@ -1,6 +1,7 @@
 ---
 title: 优先队列（堆）
-next: /basics/what-is-this-hugo-theme
+pre: /3树/commonquestion
+next: /4堆/binaryheap
 chapter: true
 weight: 0
 icon: "<b>4. </b>"

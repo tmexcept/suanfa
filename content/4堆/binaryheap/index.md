@@ -1,7 +1,7 @@
 ---
 title: 二叉堆
-prev: /basics
-next: /basics/requirements
+prev: /4堆
+next: /4堆/commonquestion
 weight: 5
 ---
 
