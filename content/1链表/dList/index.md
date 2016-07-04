@@ -121,7 +121,6 @@ def insert(self, index, data):
 
 
 def delete(self, index):
-
     if index < 0 or index >= len(self):
         return
 
