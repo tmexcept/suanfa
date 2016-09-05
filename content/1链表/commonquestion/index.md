@@ -6,7 +6,7 @@ weight: 15
 toc: true
 ---
 
-本节我们来学习面试中几个常见的链表问题
+本节我们来学习面试中几个常见的链表问题，题目来源主要为leetcode
 
 ## 检测链表中是否有环
 [题目来源](https://leetcode.com/problems/linked-list-cycle-ii/)

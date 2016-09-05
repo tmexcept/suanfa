@@ -18,7 +18,9 @@ class Node:
         self.prev = prev
 ```
 
-下面我们还是写出基本框架
+下面我们还是写出基本框架，包括初始化函数，链表长度函数，判断链表是否为空，清空链表，像链表中插入和删除元素等等。
+
+**请不要直接看下面的代码，先尝试自己写。**
 ```python
 class DlinkedList:
 
@@ -36,7 +38,8 @@ class DlinkedList:
         pass
 ```
 
-首先我们写出初始化函数
+我们写出初始化函数,我们可以读入一个数组并将其生成一个链表，注意双端链表要从头到尾从尾到头都可以查找。
+
 ```python
 def __init__(self,datas=None):
 
@@ -65,7 +68,8 @@ def __init__(self,datas=None):
     self.tail.prev = p
 ```
 
-主要需要注意的是插入和删除，我们需要判断插入位置是靠近头还是尾
+计算链表长度，判断链表是否为空，清空链表都比较简单，请自行完成。主要需要注意的是插入和删除，我们需要判断插入位置是靠近头还是尾。
+如果靠近头，我们就从头开始遍历找到操作位置，否则就从尾部开始遍历
 
 ```python
 def insert(self, index, data):
@@ -82,18 +86,21 @@ def insert(self, index, data):
         self.tail = self.head
         return
 
+    #在头部插入
     if index == 0:
         q = Node(data, self.head, None)
         self.head.prev = q
         self.head = q
         return
 
+    #在尾部插入
     if index == len(self):
         q = Node(data, None, self.tail)
         self.tail.next = q
         self.tail = q
         return
 
+    #靠近头部，从头开始
     if index <= len(self) / 2:
         j = 0
         p = self.head
@@ -107,6 +114,7 @@ def insert(self, index, data):
         p.prev = q
         return
 
+    #靠近尾部，从尾部开始
     if index > len(self) / 2:
         j = len(self)
         p = self.tail
@@ -124,16 +132,19 @@ def delete(self, index):
     if index < 0 or index >= len(self):
         return
 
+    #删除链表头
     if index == 0:
 		    result = self.head.data
         self.head = self.head.next
         return result
 
+    #删除链表尾
     if index == len(self) - 1:
         result = self.tail.data
         self.tail = self.tail.prev
         return result
 
+    #删除靠近头部的元素
     if index <= len(self)/2:
         j = 0
         p = self.head
@@ -146,6 +157,7 @@ def delete(self, index):
         p.next.prev = post
         return p.data
 
+    #删除靠近尾部的元素
     if index > len(self)/2:
         j = len(self)-1
         p = self.tail

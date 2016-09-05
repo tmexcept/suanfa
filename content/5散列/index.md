@@ -1,12 +1,12 @@
 ---
 title: 散列
-next: /basics/what-is-this-hugo-theme
+next: /6排序
 chapter: true
 weight: 0
 icon: "<b>5. </b>"
 ---
 
-### Chapter 1
+### Chapter 5
 
 # 散列
 

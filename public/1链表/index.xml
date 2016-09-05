@@ -195,7 +195,7 @@ def delete(self, index):
       <guid>http://shrouded-inlet-85726.herokuapp.com/1%E9%93%BE%E8%A1%A8/dlist/</guid>
       <description>&lt;p&gt;双向链表和单链表不同之处在于，链表中的每一个节点，都保存其数据域和前/后驱指针。这就意味着如果你想删除链表的最后一个元素，你不需要从表头开始遍历到最后一个元素了。你可以直接从表尾开始直接删除这个元素。显然，双向链表在效率上要高于单链表，不过其数据结构更复杂，占用了更多的空间。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/dlinkedlist.pngpwd&#34; alt=&#34;DlinkedList&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://shrouded-inlet-85726.herokuapp.com/img/ch1/dlinkedlist.png&#34; alt=&#34;DlinkedList&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;首先我们来定义节点。包含数据以及prev/next两个指针&lt;/p&gt;
 
@@ -206,7 +206,9 @@ def delete(self, index):
         self.prev = prev
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;下面我们还是写出基本框架&lt;/p&gt;
+&lt;p&gt;下面我们还是写出基本框架，包括初始化函数，链表长度函数，判断链表是否为空，清空链表，像链表中插入和删除元素等等。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;请不要直接看下面的代码，先尝试自己写。&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class DlinkedList:
 
@@ -224,7 +226,7 @@ def delete(self, index):
         pass
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;首先我们写出初始化函数&lt;/p&gt;
+&lt;p&gt;我们写出初始化函数,我们可以读入一个数组并将其生成一个链表，注意双端链表要从头到尾从尾到头都可以查找。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def __init__(self,datas=None):
 
@@ -253,7 +255,8 @@ def delete(self, index):
     self.tail.prev = p
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;主要需要注意的是插入和删除，我们需要判断插入位置是靠近头还是尾&lt;/p&gt;
+&lt;p&gt;计算链表长度，判断链表是否为空，清空链表都比较简单，请自行完成。主要需要注意的是插入和删除，我们需要判断插入位置是靠近头还是尾。
+如果靠近头，我们就从头开始遍历找到操作位置，否则就从尾部开始遍历&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def insert(self, index, data):
 
@@ -269,18 +272,21 @@ def delete(self, index):
         self.tail = self.head
         return
 
+    #在头部插入
     if index == 0:
         q = Node(data, self.head, None)
         self.head.prev = q
         self.head = q
         return
 
+    #在尾部插入
     if index == len(self):
         q = Node(data, None, self.tail)
         self.tail.next = q
         self.tail = q
         return
 
+    #靠近头部，从头开始
     if index &amp;lt;= len(self) / 2:
         j = 0
         p = self.head
@@ -294,6 +300,7 @@ def delete(self, index):
         p.prev = q
         return
 
+    #靠近尾部，从尾部开始
     if index &amp;gt; len(self) / 2:
         j = len(self)
         p = self.tail
@@ -308,20 +315,22 @@ def delete(self, index):
 
 
 def delete(self, index):
-
     if index &amp;lt; 0 or index &amp;gt;= len(self):
         return
 
+    #删除链表头
     if index == 0:
 		    result = self.head.data
         self.head = self.head.next
         return result
 
+    #删除链表尾
     if index == len(self) - 1:
         result = self.tail.data
         self.tail = self.tail.prev
         return result
 
+    #删除靠近头部的元素
     if index &amp;lt;= len(self)/2:
         j = 0
         p = self.head
@@ -334,11 +343,12 @@ def delete(self, index):
         p.next.prev = post
         return p.data
 
+    #删除靠近尾部的元素
     if index &amp;gt; len(self)/2:
         j = len(self)-1
         p = self.tail
         post = self.tail
-		    while j &amp;gt; index:
+        while j &amp;gt; index:
             post = p
             p = p.prev
             j = j-1

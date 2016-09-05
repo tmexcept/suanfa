@@ -20,7 +20,7 @@
 
 &lt;h1 id=&#34;散列:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;散列&lt;/h1&gt;
 
-&lt;p&gt;Discover what this Hugo theme is all about and the core-concepts behind it.&lt;/p&gt;
+&lt;p&gt;散列是一种用于以常数平均时间插入删除和查找的数据结构。在各种编程语言中都已经有相应的实现，比如python中的字典;java中有Hashtable和HashMap;javascript中的对象就是一个hash;golang中有map;swift中有Dictionary等等。&lt;/p&gt;
 </description>
     </item>
     

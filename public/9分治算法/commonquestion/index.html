@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
     
-    <title>希尔排序</title>
+    <title>常见问题</title>
     <link href="/css/nucleus.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/hybrid.css" rel="stylesheet">
@@ -27,7 +27,7 @@
        <script>hljs.initHighlightingOnLoad();</script>
 
   </head>
-  <body class="" data-url="/6%E6%8E%92%E5%BA%8F/shellsort/">
+  <body class="" data-url="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/commonquestion/">
     <nav id="sidebar">
   <div id="header-wrapper">
     <div id="header">
@@ -291,7 +291,7 @@
       
       
 
-      <li class="dd-item  parent" data-nav-id="/6%E6%8E%92%E5%BA%8F/">
+      <li class="dd-item  " data-nav-id="/6%E6%8E%92%E5%BA%8F/">
         <a href="/6%E6%8E%92%E5%BA%8F/">
           <span>
             
@@ -315,7 +315,7 @@
           
           
           
-            <li class="dd-item active" data-nav-id="/6%E6%8E%92%E5%BA%8F/shellsort/">
+            <li class="dd-item " data-nav-id="/6%E6%8E%92%E5%BA%8F/shellsort/">
               <a href="/6%E6%8E%92%E5%BA%8F/shellsort/">
                 <span>希尔排序     </i></span>
               </a>
@@ -440,7 +440,7 @@
       
       
 
-      <li class="dd-item  " data-nav-id="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
+      <li class="dd-item  parent" data-nav-id="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
         <a href="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">
           <span>
             
@@ -456,7 +456,7 @@
           
           
           
-            <li class="dd-item " data-nav-id="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/commonquestion/">
+            <li class="dd-item active" data-nav-id="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/commonquestion/">
               <a href="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/commonquestion/">
                 <span>常见问题     </i></span>
               </a>
@@ -522,8 +522,16 @@
                       </a>
                   </span>
                 
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
                 
                 
+                
+                
+                  
+                
+                  
+                
+                  
                 
                   
                 
@@ -540,95 +548,99 @@
                   
                     
                     
-                <a href="/6%E6%8E%92%E5%BA%8F/" itemprop="url"><span itemprop="title">排序</span></a> <i class="fa fa-angle-right"></i>
+                <a href="/9%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" itemprop="url"><span itemprop="title">分治算法</span></a> <i class="fa fa-angle-right"></i>
                     
                   
                 
                   
                 
-                  
-                
-                  
-                
-                  
-                
-                <span itemprop="title"> 希尔排序</span>
+                <span itemprop="title"> 常见问题</span>
               </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#jump-game:d680e8a854a7cbad6d490c445cba2eba">jump game</a></li>
+<li><a href="#jump-game-ii:d680e8a854a7cbad6d490c445cba2eba">jump game II</a></li>
+<li><a href="#best-time-to-buy-and-sell-stock-ii:d680e8a854a7cbad6d490c445cba2eba">best time to buy and sell stock II</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
               
 
             </div>
             
     	        <div id="body-inner">
                 
-                <h1>希尔排序</h1>
+                <h1>常见问题</h1>
                 
 
 
 
-<p>希尔排序是冲破二次时间屏障的第一批算法。它通过比较相距一定间隔的元素来工作，且各趟比较所用的距离随着算法的进行而减小。所以希尔排序有时候也叫缩减增量排序。</p>
+<h2 id="jump-game:d680e8a854a7cbad6d490c445cba2eba">jump game</h2>
 
-<p>我们还是举一个例子来分析,假设有一个数组 81,99,12,33,43,23,48,76,68,11,25,87,90。每一步，我们都设定一个增量，并根据增量将数组分组，并对每一个分组进行插入排序。</p>
+<p><a href="https://leetcode.com/problems/jump-game/">leetcode 55题</a>
+给定一组非负整数，每个数表示可以从这个位置向前跳不多于这个数的步子。判断是否可以从头跳到尾。</p>
 
-<table>
-<thead>
-<tr>
-<th>运行步骤</th>
-<th>结果</th>
-</tr>
-</thead>
+<p>比如 (2,3,1,1,4) 可以从第一个位置跳到第二个位置，再跳到最后一个位置</p>
 
-<tbody>
-<tr>
-<td>原始序列</td>
-<td>81  99  12  33  43  23  48  76  68  11  25  87  90</td>
-</tr>
+<p>再比如 (3,2,1,0,4) 则不能跳到最后一个位置</p>
 
-<tr>
-<td>按5为距离</td>
-<td>23  48  12  33  11  25  87  76  68  43  81  99  90</td>
-</tr>
-
-<tr>
-<td>按3为距离</td>
-<td>23  11  12  33  48  25  43  76  68  87  81  99  90</td>
-</tr>
-
-<tr>
-<td>按1为距离</td>
-<td>11  12  23  25  33  43  48  68  76  81  87  90  99</td>
-</tr>
-</tbody>
-</table>
-
-<pre><code class="language-python">def insertSort(l, start, gap):
-    for i in range(start+gap, len(l), gap):
-        currentValue = l[i]
-        pos = i
-        while pos &gt;= gap and l[pos-gap] &gt; currentValue:
-            l[pos] = l[pos - gap]
-            pos -= gap
-        l[pos] = currentValue
-
-def shellSort(l):
-    sublistCount = len(l) / 2
-    while sublistCount&gt;0:
-        for pos in range(sublistCount):
-            insertSort(l, pos, sublistCount)
-        sublistCount = sublistCount / 2
-
-#测试
-import random
-a = [random.random() for i in range(40)]
-print a
-shellSort(a)
-print a
-
-
+<pre><code class="language-python">class Solution(object):
+    def canJump(self,nums):
+        m = 0
+        for i,n in enumerate(nums):
+            if i &gt; m:
+                return False
+            m = max(m, n+i)
+        return True
 </code></pre>
 
-<h2 id="性能分析:d680e8a854a7cbad6d490c445cba2eba">性能分析</h2>
+<h2 id="jump-game-ii:d680e8a854a7cbad6d490c445cba2eba">jump game II</h2>
 
-<p>虽然希尔排序编程简单，但是，其运行时间的分析相当复杂。而且不同的增量选择方式对运行时间也有着明显的影响</p>
+<p><a href="https://leetcode.com/problems/jump-game-ii/">leetcode 45题</a>
+这题是上一题的升级版，假设你一定可以从头跳到尾，求最少要跳几次。我们保存两个值，一个是当前步数下能跳的最远距离，另一个是当前步数加一步条件下能到的最远距离。</p>
+
+<pre><code class="language-python">class Solution(object):
+    def jump(self, nums):
+        n, cur_max, next_max, steps = len(nums), 0, 0, 0
+        for i in xrange(n):
+            if i &gt; cur_max:
+                steps += 1
+                cur_max = next_max
+                if cur_max &gt;= n: break
+            next_max = max(next_max, nums[i] + i)
+        return steps
+</code></pre>
+
+<h2 id="best-time-to-buy-and-sell-stock-ii:d680e8a854a7cbad6d490c445cba2eba">best time to buy and sell stock II</h2>
+
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/">leetcode 122题</a>
+这道题的条件是可以买卖多次，但是如果处于买进状态下是不能买的。
+策略很简单，涨价前买进，降价前卖出。</p>
+
+<pre><code class="language-python">class Solution(object):
+    def maxProfit(self, prices):
+        flag = False
+        profit = 0
+        for i in range(len(prices)-1):
+            if prices[i]&lt;prices[i+1] and not flag: #升值
+                profit -= prices[i]
+                flag = not flag
+            if prices[i]&gt;prices[i+1] and flag:
+                profit += prices[i]
+                flag = not flag
+        if flag:
+            profit += prices[-1]
+        return profit
+
+</code></pre>
 
 
       
@@ -636,8 +648,8 @@ print a
     </div>
 
     <div id="navigation">
-        <a class="nav nav-prev" href="/6%e6%8e%92%e5%ba%8f/insertsort"> <i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next" href="/6%e6%8e%92%e5%ba%8f/heapsort" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        <a class="nav nav-prev" href="/9%e5%88%86%e6%b2%bb%e7%ae%97%e6%b3%95"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="/a%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
     </div>
 
     </section>

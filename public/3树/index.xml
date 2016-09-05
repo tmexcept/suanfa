@@ -308,20 +308,6 @@ def height(node):
     </item>
     
     <item>
-      <title>avl树</title>
-      <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/avl%E6%A0%91/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/avl%E6%A0%91/</guid>
-      <description>&lt;p&gt;Thanks to the simplicity of Hugo, this page is as empty as this theme needs requirements.&lt;/p&gt;
-
-&lt;p&gt;Just download &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;Hugo&lt;/a&gt; binary for your OS (Windows, Linux, Mac) : it&amp;rsquo;s that simple.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;images/magic.gif?classes=shadow&#34; alt=&#34;Magic&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>常见问题</title>
       <link>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/commonquestion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -329,67 +315,172 @@ def height(node):
       <guid>http://shrouded-inlet-85726.herokuapp.com/3%E6%A0%91/commonquestion/</guid>
       <description>
 
-&lt;p&gt;The following steps are here to help you initialize your new website. If you don&amp;rsquo;t know Hugo at all, we strongly suggest you to train by following this &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;great documentation for beginners&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;判断两棵树是否为同一棵:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;判断两棵树是否为同一棵&lt;/h2&gt;
 
-&lt;h2 id=&#34;create-your-project:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your project&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/same-tree/&#34;&gt;leetcode 100题&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Hugo provides a &lt;code&gt;new&lt;/code&gt; command to create a new website.&lt;/p&gt;
+&lt;p&gt;树这种数据结构，总是伴随着递归算法。在这题里面，要判断两棵树是否相同，首先要看这两棵树的根是否相同，然后看根的左子树是否相同，右子树是否相同。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo new site &amp;lt;new_project&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution:
+    def isSameTree(self, p,q):
+        if not p or not q:
+            return p == q
+        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;install-the-theme:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Install the theme&lt;/h2&gt;
+&lt;h2 id=&#34;判断一棵树是否为对称树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;判断一棵树是否为对称树&lt;/h2&gt;
 
-&lt;p&gt;Install the &lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; theme by following &lt;a href=&#34;https://gohugo.io/themes/installing/&#34;&gt;this documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/symmetric-tree/&#34;&gt;leetcode 101题&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The theme&amp;rsquo;s repository is: &lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn.git&#34;&gt;https://github.com/matcornic/hugo-theme-learn.git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;对称树要求左右对称，这题需要递归地检查左子树和右子树是否互相对称。&lt;/p&gt;
 
-&lt;h2 id=&#34;basic-configuration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Basic configuration&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def isSymmetric(self, root):
+        return self.isSym(root,root)
 
-&lt;p&gt;When building the website, you can set a theme by using &lt;code&gt;--theme&lt;/code&gt; option. We suggest you to edit your configuration file and set the theme by default. Example with &lt;code&gt;config.toml&lt;/code&gt; format.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;theme = &amp;quot;hugo-theme-learn&amp;quot;
+    def isSym(self,p,q):
+        if not p and not q: return True
+        if p and q:
+            return p.val == q.val and self.isSym(p.left, q.right) and self.isSym(p.right,q.left)
+        return False
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;create-your-first-chapter-page:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first chapter page&lt;/h2&gt;
+&lt;h2 id=&#34;求一棵树的最大深度:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;求一棵树的最大深度&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; provides archetypes to create skeletons for your website. Begin by creating your first chapter page with the following command&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/maximum-depth-of-binary-tree/&#34;&gt;leetcode 104题&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo new --kind chapter basics/index.md
+&lt;p&gt;求一棵树的最大深度，就是算离根最远的节点的深度，根节点的深度为1&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right))+1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;create-your-first-content-pages:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first content pages&lt;/h2&gt;
+&lt;h2 id=&#34;求一棵树的最小深度:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;求一棵树的最小深度&lt;/h2&gt;
 
-&lt;p&gt;Then, create content pages inside the previous chapter. Here are two ways to create content in the chapter :&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/minimum-depth-of-binary-tree/&#34;&gt;leetcode 111题&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo new basics/first-content.md
-hugo new basics/second-content/index.md
+&lt;p&gt;求一棵树的最小深度，就是算离根最近的叶子节点的深度。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def minDepth(self, root):
+        if not root:
+            return 0
+        if root.left==None or root.right==None:
+            return self.minDepth(root.left)+self.minDepth(root.right)+1
+        return min(self.minDepth(root.right),self.minDepth(root.left))+1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;launching-the-website:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Launching the website&lt;/h2&gt;
+&lt;h2 id=&#34;判断一棵树是否为平衡二叉树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;判断一棵树是否为平衡二叉树&lt;/h2&gt;
 
-&lt;p&gt;Launch the following command&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/balanced-binary-tree/&#34;&gt;leetcode 110题&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo serve
+&lt;p&gt;如果所有记得的左右子树的高度差都小于等于1，那么这棵树就是平衡二叉树。我们首先要写出一个计算节点高度的函数，这个函数也是递归的。
+然后根据平衡二叉树的定义，我们可以写成isBalanced()函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def isBalanced(self, root):
+        if not root:
+            return True
+        return abs(self.getHeight(root.left) - self.getHeight(root.right)) &amp;lt; 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+
+    def getHeight(self, root):
+        if not root:
+            return 0
+        return max(self.getHeight(root.left), self.getHeight(root.right)) + 1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Go to &lt;code&gt;http://localhost:1313/basics&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二叉树的层序遍历:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;二叉树的层序遍历&lt;/h2&gt;
 
-&lt;p&gt;If you are curious, at the home page (&lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;), you should see an empty homepage. It&amp;rsquo;s because this theme does not really provide a default homepage.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/binary-tree-level-order-traversal/&#34;&gt;leetcode 102题&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;You typically have 2 choices :&lt;/p&gt;
+&lt;p&gt;这里我们需要用到辅助队列，首先队列中只有一个根，然后我们让元素出队，并将该元素的儿子入队，如此循环知道遍历完树。&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Create an &lt;a href=&#34;https://gohugo.io/templates/homepage/&#34;&gt;overview homepage&lt;/a&gt; for your project. Write an &lt;code&gt;index.html&lt;/code&gt; file in &lt;em&gt;layouts/&lt;/em&gt; folder.&lt;/li&gt;
-&lt;li&gt;Create a redirection to one your documentation page. Either by:
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def levelOrder(self, root):
+        ans, level = [], [root]
+        while root and level:
+            ans.append([node.val for node in level])            
+            level = [kid for n in level for kid in (n.left, n.right) if kid]
+        return ans
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Configuring your server to automatically redirect homepage to one your documentation page - &lt;em&gt;Recommended&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Creating an empty html page with the following code in the head tag :&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h2 id=&#34;从先序和中序重建二叉树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;从先序和中序重建二叉树&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0; url=http://example.com/&amp;quot;/&amp;gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/&#34;&gt;leetcode 105题&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;先序的第一个元素告诉了我们树的根节点，我们就可以根据这个根节点在中序遍历中的位置，将其划分为左子树和右子树。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def buildTree(self, preorder, inorder):
+        if inorder:
+            ind = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[ind])
+            root.left = self.buildTree(preorder, inorder[0:ind])
+            root.right = self.buildTree(preorder, inorder[ind+1:])
+            return root
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;从后序和中序重建二叉树:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;从后序和中序重建二叉树&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/&#34;&gt;leetcode 106题&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;后序的最后一个元素告诉了我们树的根节点，我们就可以根据这个根节点在中序遍历中的位置，将其划分为左子树和右子树。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def buildTree(self, inorder, postorder):
+        if inorder:
+            root = TreeNode(postorder.pop())
+            ind = inorder.index(root.val)
+            root.right = self.buildTree(inorder[ind+1:],postorder)
+            root.left = self.buildTree(inorder[:ind],postorder)
+            return root      
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;path-sum:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;path sum&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/path-sum/&#34;&gt;leetcode 112题&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;判断树中是否存在一条路径使得路径上所有节点的和为指定的值，使用递归算法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def hasPathSum(self, root, sum):
+        if not root:
+            return False
+        if not root.left and not root.right and root.val == sum:
+            return True
+        return self.hasPathSum(root.left,sum-root.val) or self.hasPathSum(root.right, sum-root.val)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;path-sum-ii:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;path sum II&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/path-sum-ii/&#34;&gt;leetcode 113题&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;接上一题，不过要返回所有路径和为指定值得路径。这题也是用递归的方法。事实上，下面的解法可以被总结为一个套路(在后面的章节中我们会介绍图的DFS遍历）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def pathSum(self, root, sum):
+        res = []
+        self.helper(root,sum,[],res)
+        return res
+
+    def helper(self, root, sum, path, res):
+        if not root:
+            return
+        if root.val == sum and self.isleaf(root):
+            res.append(path+[sum])
+            return
+
+        self.helper(root.left, sum-root.val, path+[root.val],res)
+        self.helper(root.right, sum-root.val, path+[root.val],res)
+
+
+    def isleaf(self,root):
+        if root.left or root.right:
+            return False
+        return True
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

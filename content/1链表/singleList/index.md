@@ -52,6 +52,7 @@ class LinkedList:
 注意，链表对象并不持有所有元素，它只保存了表头。
 ```python
 def __init__(self, data=None):
+
     if data == None:
         self.head = None
     else:
@@ -66,6 +67,7 @@ def __init__(self, data=None):
 想要知道链表有多长？你必须遍历单链表，时间复杂度为`$O(n)$`
 ```python
 def __len__(self):
+
     if self.head is None:
         return 0
     p = self.head
@@ -88,6 +90,7 @@ def clear(self):
 想要索引单链表怎么办,还是得从头一个一个数过去
 ```python
 def __getitem__(self, index):
+
     if index < 0 or index >= len(self):
         return None
     if self.head is None:
@@ -100,6 +103,7 @@ def __getitem__(self, index):
     return p.data
 
 def __setitem__(self, index, value):
+
     if index < 0 or index >= len(self):
         return
     if self.head is None:
@@ -118,6 +122,7 @@ def __setitem__(self, index, value):
 
 ```python
 def insert(self, index, data):
+
     if data is None:
         return
     if index < 0 or index > len(self):
@@ -141,6 +146,7 @@ def insert(self, index, data):
 
 
 def delete(self, index):
+  
     if index < 0 or index >= len(self):
         return None
     if self.head is None:

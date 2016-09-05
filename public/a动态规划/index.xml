@@ -16,220 +16,144 @@
       <guid>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
       <description>
 
-&lt;h3 id=&#34;chapter-1:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chapter 1&lt;/h3&gt;
+&lt;h3 id=&#34;chapter-10:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chapter 10&lt;/h3&gt;
 
-&lt;h1 id=&#34;basics:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Basics&lt;/h1&gt;
+&lt;h1 id=&#34;动态规划:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;动态规划&lt;/h1&gt;
 
-&lt;p&gt;Discover what this Hugo theme is all about and the core-concepts behind it.&lt;/p&gt;
+&lt;p&gt;刚刚学会使用递归算法的时候，我像发现了新大陆一样兴奋，疯狂的使用递归算法。但是递归算法也深深伤害了我。函数反复地自身调用可能会导致算法在时间和空间复杂度上都变得非常糟糕。很多时候，我们应该想办法把递归算法改成非递归的算法。动态规划就是一种这样的技巧，通过把子问题的答案存在一张表中来将递归算法变成非递归算法。&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>What is this Hugo theme ?</title>
-      <link>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/what-is-this-hugo-theme/</link>
+      <title>动态规划</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/what-is-this-hugo-theme/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; is a theme for &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;, a fast and modern static website engine written in Go. Where Hugo is often used for blogs, this theme is fully designed for &lt;strong&gt;technical documentation&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;This theme is a partial porting of the &lt;a href=&#34;http://learn.getgrav.org/&#34;&gt;Learn theme&lt;/a&gt; of &lt;a href=&#34;https://getgrav.org/&#34;&gt;Grav&lt;/a&gt;, a modern flat-file CMS written in PHP.&lt;/p&gt;
-
-&lt;p&gt;This current documentation has been statically generated with Hugo with a simple command : &lt;code&gt;hugo -t hugo-theme-learn&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;images/grav-overview.png?width=60%&#34; alt=&#34;Grav Overview&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Requirements</title>
-      <link>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/requirements/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/requirements/</guid>
-      <description>&lt;p&gt;Thanks to the simplicity of Hugo, this page is as empty as this theme needs requirements.&lt;/p&gt;
-
-&lt;p&gt;Just download &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;Hugo&lt;/a&gt; binary for your OS (Windows, Linux, Mac) : it&amp;rsquo;s that simple.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;images/magic.gif?classes=shadow&#34; alt=&#34;Magic&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Getting started</title>
-      <link>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/installation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/installation/</guid>
+      <guid>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/introduction/</guid>
       <description>
 
-&lt;p&gt;The following steps are here to help you initialize your new website. If you don&amp;rsquo;t know Hugo at all, we strongly suggest you to train by following this &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;great documentation for beginners&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;我们先来实现最常见的斐波那契数列。[1,1,2,3,5,8,11 &amp;hellip;]，我们知道从第三个数开始，存在这样的规律fib(n) = fib(n-1) + fib(n-2)&lt;/p&gt;
 
-&lt;h2 id=&#34;create-your-project:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your project&lt;/h2&gt;
+&lt;p&gt;我们可以很自然的写出这样的函数&lt;/p&gt;
 
-&lt;p&gt;Hugo provides a &lt;code&gt;new&lt;/code&gt; command to create a new website.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo new site &amp;lt;new_project&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def fib(n):
+    if n == 0 or n == 1:
+        return 1
+    if n &amp;gt; 1:
+        return fib(n-1)+fib(n-2)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;install-the-theme:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Install the theme&lt;/h2&gt;
+&lt;p&gt;试试用上面的函数计算fib(40)，算了很久吧，再试试fib(41)呢，不用算了，fib(41)=fib(40)+fib(39)，计算的时间就是fib(40)的时间和fib(39)的时间。这么递归下去，我们如果要算fib(100)怎么办？&lt;/p&gt;
 
-&lt;p&gt;Install the &lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; theme by following &lt;a href=&#34;https://gohugo.io/themes/installing/&#34;&gt;this documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;方法是把递归变成非递归算法，我们把计算fib(100)变成计算fib(99)+fib(98),而fib(99)=fib(98)+fib(97)，在计算fib(100)和fib(99)时，我们发现都需要计算fib(98),那么我们应该在计算得到fib(98)，时就把它存下来，当需要用到的时候，不要再去计算一遍。&lt;/p&gt;
 
-&lt;p&gt;The theme&amp;rsquo;s repository is: &lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn.git&#34;&gt;https://github.com/matcornic/hugo-theme-learn.git&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;basic-configuration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Basic configuration&lt;/h2&gt;
-
-&lt;p&gt;When building the website, you can set a theme by using &lt;code&gt;--theme&lt;/code&gt; option. We suggest you to edit your configuration file and set the theme by default. Example with &lt;code&gt;config.toml&lt;/code&gt; format.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;theme = &amp;quot;hugo-theme-learn&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def fib(n):
+    if n == 0 or n == 1:
+        return 1
+    ret = [1,1]+[0]*(n-2)
+    for i in range(2,n):
+        ret[i] = ret[i-1]+ret[i-2]
+    return ret[-1]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;create-your-first-chapter-page:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first chapter page&lt;/h2&gt;
+&lt;p&gt;现在我就算是要计算fib(1000)也是瞬间就可以得到结果了。事实上如果我们不需要整个数列，而是只要求fib(n)的话，我们还可以简化代码，并降低空间复杂度。我们并不需要计算出整个数列，只需要保存当前位置的前两个数的值。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; provides archetypes to create skeletons for your website. Begin by creating your first chapter page with the following command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo new --kind chapter basics/index.md
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def fib(n):
+    if n &amp;lt; 2:
+        return 1
+    a,b = 1,1
+    for _ in range(n-2):
+        a,b = b,a+b
+    return b
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;create-your-first-content-pages:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Create your first content pages&lt;/h2&gt;
+&lt;h2 id=&#34;爬梯子问题:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;爬梯子问题&lt;/h2&gt;
 
-&lt;p&gt;Then, create content pages inside the previous chapter. Here are two ways to create content in the chapter :&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/climbing-stairs/&#34;&gt;leetcode 70题&lt;/a&gt; 这道题是斐波那契数列的一个变种。题目说，如果你要爬一个梯子，一次可以爬一级或者两级，你有几种爬法。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo new basics/first-content.md
-hugo new basics/second-content/index.md
+&lt;p&gt;显然，如果梯子只有一级那就是一种，如果有两级，那就有两种。如果有三级，你可以先爬一级，这个时候问题就变成了你有几种方法爬上两级梯子；你也可以先爬两级，这个时候问题变成了你有几种方法爬上一级梯子。p(3)=p(1)+p(2),而对于所有大于等于3的n，我们都有p(n)=p(n-2)+p(n-1)。代码也和上面的斐波那契数列几乎一样。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def climbStairs(self, n):
+        if n==1:
+            return 1
+        if n==2:
+            return 2
+        a,b=1,2
+        for _ in range(n-2):
+            a,b = b,a+b
+        return b
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;launching-the-website:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Launching the website&lt;/h2&gt;
+&lt;h2 id=&#34;unique-paths问题:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;unique paths问题&lt;/h2&gt;
 
-&lt;p&gt;Launch the following command&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/unique-paths/&#34;&gt;leetcode 62题&lt;/a&gt; 这道题是非常经典非常典型的动态规划题。问题是从一个方阵的左上角走到右下角有多少种走法（每次只能向右或者向下）。首先，到达方阵上边缘各个点的路径数都是1，到达方阵左边缘各个点的路径数都是1，而到达其他点都可以从其左侧进入或者从其上侧进入。也就是 &lt;code&gt;$grid[i][j] = grid[i-1][j] + grid[i][j-1]$&lt;/code&gt;。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;hugo serve
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def uniquePaths(self, m, n):
+        grid = [[0]*n]*m
+        for i in range(m):
+            grid[i][0] = 1
+        for i in range(n):
+            grid[0][j] = 1
+        for i in range(1,m):
+            for j in range(1,n):
+                grid[i][j] = grid[i-1][j] + grid[i][j-1]
+        return grid[-1][-1]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Go to &lt;code&gt;http://localhost:1313/basics&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;unique-paths-ii问题:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;unique paths II问题&lt;/h2&gt;
 
-&lt;p&gt;If you are curious, at the home page (&lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;), you should see an empty homepage. It&amp;rsquo;s because this theme does not really provide a default homepage.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/unique-paths-ii/&#34;&gt;leetcode 63题&lt;/a&gt; 这道题是上一道题的进化版，在方阵中加上一些障碍。还是计算左上到右下的路径数，但是所有的路径都不能经过这些有障碍的点。&lt;/p&gt;
 
-&lt;p&gt;You typically have 2 choices :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def uniquePathsWithObstacles(self, obstacleGrid):
+        m,n = len(obstacleGrid), len(obstacleGrid[0])
+        obstacleGrid[0][0] = 1 - obstacleGrid[0][0]
 
-&lt;ol&gt;
-&lt;li&gt;Create an &lt;a href=&#34;https://gohugo.io/templates/homepage/&#34;&gt;overview homepage&lt;/a&gt; for your project. Write an &lt;code&gt;index.html&lt;/code&gt; file in &lt;em&gt;layouts/&lt;/em&gt; folder.&lt;/li&gt;
-&lt;li&gt;Create a redirection to one your documentation page. Either by:
+        for i in range(1, n):
+            if not obstacleGrid[0][i]:
+                obstacleGrid[0][i] = obstacleGrid[0][i-1]
+            else:
+                obstacleGrid[0][i] = 0
 
-&lt;ol&gt;
-&lt;li&gt;Configuring your server to automatically redirect homepage to one your documentation page - &lt;em&gt;Recommended&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Creating an empty html page with the following code in the head tag :&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
+        for i in range(1, m):
+            if not obstacleGrid[i][0]:
+                obstacleGrid[i][0] = obstacleGrid[i-1][0]
+            else:
+                obstacleGrid[i][0] = 0
 
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;  &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0; url=http://example.com/&amp;quot;/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Configuration</title>
-      <link>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/configuration/</link>
-      <pubDate>Sat, 09 Apr 2016 16:50:16 +0200</pubDate>
-      
-      <guid>http://shrouded-inlet-85726.herokuapp.com/a%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/configuration/</guid>
-      <description>
+        for i in range(1, m):
+            for j in range(1, n):
+                if not obstacleGrid[i][j]:
+                    obstacleGrid[i][j] = obstacleGrid[i][j-1]+obstacleGrid[i-1][j]
+                else:
+                    obstacleGrid[i][j] = 0
 
-&lt;h2 id=&#34;site-configuration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Site configuration&lt;/h2&gt;
-
-&lt;p&gt;On top of &lt;a href=&#34;https://gohugo.io/overview/configuration/&#34;&gt;Hugo global configuration&lt;/a&gt;, &lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; lets you define the following parameters :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[params]
-  # Prefix URL to edit current page. Useful to give opportunity to people to create merge request for your doc.
-  # See the config.toml file from this documentation site to have an example.
-  editURL = &amp;quot;&amp;quot;
-  # Author of the site, will be used in meta information
-  author = &amp;quot;&amp;quot;
-  # Description of the site, will be used in meta information
-  description = &amp;quot;&amp;quot;
-  # Shows a checkmark for visited pages on the menu. Default to false
-  showVisitedLinks = false
+        return obstacleGrid[-1][-1]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;div class=&#34;notices tip&#34; &gt;&lt;p&gt;Assets are based on the root of the site. So, don&amp;rsquo;t forget to use Hugo built-in &lt;code&gt;canonifyURLs = true&lt;/code&gt; parameter if you set a &lt;code&gt;baseurl&lt;/code&gt; which includes a component path. Absolutely needed for Github pages like &lt;a href=&#34;http://userid.github.io/project&#34;&gt;http://userid.github.io/project&lt;/a&gt;. Find &lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn/issues/3&#34;&gt;More information&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
+&lt;h2 id=&#34;minimum-path-sum问题:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;minimum path sum问题&lt;/h2&gt;
 
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/minimum-path-sum/&#34;&gt;leetcode 64题&lt;/a&gt; 这个题也是超级经典的动态规划问题，要求计算从左上到右下的最短路径长度。我们还是用动态规划的套路来解。首先计算上边缘和左边缘，然后对于其他点来说，看上边到达比较近还是左边到达比较近，来决定其距离。&lt;/p&gt;
 
-&lt;h2 id=&#34;style-customization:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Style customization&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Hugo-theme-learn&lt;/strong&gt; has been built to be as configurable as possible by defining multiple &lt;a href=&#34;https://gohugo.io/templates/partials/&#34;&gt;partials&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In &lt;code&gt;themes/hugo-theme-learn/layouts/partials/&lt;/code&gt;, you will find all the partials defined for this theme. If you need to overwrite something, don&amp;rsquo;t change the code directly. Instead &lt;a href=&#34;https://gohugo.io/themes/customizing/&#34;&gt;follow this page&lt;/a&gt;. You&amp;rsquo;d create a new partial in the &lt;code&gt;layouts/partials&lt;/code&gt; folder of your local project. This partial will have the priority.&lt;/p&gt;
-
-&lt;p&gt;This theme defines the following partials :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;header&lt;/em&gt;: the header of the content page (contains the breadcrumbs)&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;style&lt;/em&gt;: CSS imports, in case you want to override the style&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;footer&lt;/em&gt;: the footer of the content page (contains the arrows)&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;script&lt;/em&gt;:  Javacript includes, in case you want to add Javascript on top of provided ones&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;favicon&lt;/em&gt;: the favicon&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;logo&lt;/em&gt;: the logo, on top left hand corner.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;meta&lt;/em&gt;: HTML meta tags, if you want to change default behavior&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;toc&lt;/em&gt;: table of contents&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;change-the-logo:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Change the logo&lt;/h3&gt;
-
-&lt;p&gt;Create a new file in &lt;code&gt;layouts/partials/&lt;/code&gt; named &lt;code&gt;logo.html&lt;/code&gt;. Then write any HTML you want.
-You could use an &lt;code&gt;img&lt;/code&gt; HTML tag and reference an image created under the &lt;em&gt;static&lt;/em&gt; folder, or you could paste a SVG definition !&lt;/p&gt;
-
-&lt;div class=&#34;notices note&#34; &gt;&lt;p&gt;The size of the logo will adapt automatically&lt;/p&gt;
-&lt;/div&gt;
-
-
-&lt;h3 id=&#34;change-the-favicon:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Change the favicon&lt;/h3&gt;
-
-&lt;p&gt;If your favicon is a png, just drop off your image in your local &lt;code&gt;static/images/&lt;/code&gt; folder and names it &lt;code&gt;favicon.png&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If you need to change this default behavior, create a new file in &lt;code&gt;layouts/partials/&lt;/code&gt; named &lt;code&gt;favicon.html&lt;/code&gt;. Then write something like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;/images/favicon.png&amp;quot; type=&amp;quot;image/x-icon&amp;quot; /&amp;gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def minPathSum(self, grid):
+        m = len(grid)
+        n = len(grid[0])
+        for i in range(1, n):
+            grid[0][i] += grid[0][i-1]
+        for i in range(1, m):
+            grid[i][0] += grid[i-1][0]
+        for i in range(1, m):
+            for j in range(1, n):
+                grid[i][j] += min(grid[i-1][j], grid[i][j-1])
+        return grid[-1][-1]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;change-default-colors:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Change default colors&lt;/h3&gt;
+&lt;h2 id=&#34;decode-ways问题:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;decode ways问题&lt;/h2&gt;
 
-&lt;p&gt;To change default colors, you will have to add a new css file. In order to do that :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Create a css file in your local &lt;code&gt;static/css/&lt;/code&gt; folder&lt;/li&gt;
-&lt;li&gt;Create a partial HTML in your local &lt;code&gt;layouts/partials/&lt;/code&gt; named &lt;code&gt;style.html&lt;/code&gt; and add the following line&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link href=&amp;quot;/css/yourfile.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then, create CSS in the new file, overwriting default behavior. Don&amp;rsquo;t panic, we give you, just below, colors that are commonly changed.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;/* background behind the logo*/
-#header {
-    background: &amp;lt;color&amp;gt;;
-    border-color: &amp;lt;color&amp;gt;;
-}
-
-/* Background color of the menu */
-#sidebar {
-  background-color: &amp;lt;color&amp;gt;;
-}
-
-/* Background color of the menu, when clicked */
-#sidebar ul.topics &amp;gt; li.parent, #sidebar ul.topics &amp;gt; li.active {
-  background-color: &amp;lt;color&amp;gt;;
-}
-
-/* Color of all links, including arrows to get to previous and next pages */
-a {
-    color: &amp;lt;color&amp;gt;;
-}
-a:hover {
-   color: &amp;lt;color&amp;gt;;
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/decode-ways/&#34;&gt;leetcode 91题&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

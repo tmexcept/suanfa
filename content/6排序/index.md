@@ -6,7 +6,7 @@ weight: 0
 icon: "<b>6. </b>"
 ---
 
-### Chapter 1
+### Chapter 6
 
 # 排序算法
 

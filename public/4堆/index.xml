@@ -121,5 +121,40 @@ test()
 </description>
     </item>
     
+    <item>
+      <title>常见问题</title>
+      <link>http://shrouded-inlet-85726.herokuapp.com/4%E5%A0%86/commonquestion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shrouded-inlet-85726.herokuapp.com/4%E5%A0%86/commonquestion/</guid>
+      <description>
+
+&lt;h2 id=&#34;merge-k-sorted-lists:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Merge k Sorted Lists&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://leetcode.com/problems/merge-k-sorted-lists/&#34;&gt;leetcode 23题&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Solution(object):
+    def mergeKLists(self, lists):
+
+        from heapq import heappush, heappop, heapreplace, heapify
+        dummy = node = ListNode(0)
+        h = [(n.val, n) for n in lists if n]
+        heapify(h)
+        
+        while h:
+            v, n = h[0]
+            if n.next is None:
+                heappop(h)
+            else:
+                heapreplace(h, (n.next.val, n.next))
+            node.next = n
+            node = node.next
+
+        return dummy.next
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 
     
-    <title>希尔排序</title>
+    <title>常见问题</title>
     <link href="/css/nucleus.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/hybrid.css" rel="stylesheet">
@@ -27,7 +27,7 @@
        <script>hljs.initHighlightingOnLoad();</script>
 
   </head>
-  <body class="" data-url="/6%E6%8E%92%E5%BA%8F/shellsort/">
+  <body class="" data-url="/4%E5%A0%86/commonquestion/">
     <nav id="sidebar">
   <div id="header-wrapper">
     <div id="header">
@@ -235,7 +235,7 @@
       
       
 
-      <li class="dd-item  " data-nav-id="/4%E5%A0%86/">
+      <li class="dd-item  parent" data-nav-id="/4%E5%A0%86/">
         <a href="/4%E5%A0%86/">
           <span>
             
@@ -259,7 +259,7 @@
           
           
           
-            <li class="dd-item " data-nav-id="/4%E5%A0%86/commonquestion/">
+            <li class="dd-item active" data-nav-id="/4%E5%A0%86/commonquestion/">
               <a href="/4%E5%A0%86/commonquestion/">
                 <span>常见问题     </i></span>
               </a>
@@ -291,7 +291,7 @@
       
       
 
-      <li class="dd-item  parent" data-nav-id="/6%E6%8E%92%E5%BA%8F/">
+      <li class="dd-item  " data-nav-id="/6%E6%8E%92%E5%BA%8F/">
         <a href="/6%E6%8E%92%E5%BA%8F/">
           <span>
             
@@ -315,7 +315,7 @@
           
           
           
-            <li class="dd-item active" data-nav-id="/6%E6%8E%92%E5%BA%8F/shellsort/">
+            <li class="dd-item " data-nav-id="/6%E6%8E%92%E5%BA%8F/shellsort/">
               <a href="/6%E6%8E%92%E5%BA%8F/shellsort/">
                 <span>希尔排序     </i></span>
               </a>
@@ -522,12 +522,10 @@
                       </a>
                   </span>
                 
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
                 
                 
                 
-                  
-                
-                  
                 
                   
                 
@@ -540,7 +538,7 @@
                   
                     
                     
-                <a href="/6%E6%8E%92%E5%BA%8F/" itemprop="url"><span itemprop="title">排序</span></a> <i class="fa fa-angle-right"></i>
+                <a href="/4%E5%A0%86/" itemprop="url"><span itemprop="title">优先队列（堆）</span></a> <i class="fa fa-angle-right"></i>
                     
                   
                 
@@ -552,83 +550,61 @@
                 
                   
                 
-                <span itemprop="title"> 希尔排序</span>
+                  
+                
+                  
+                
+                <span itemprop="title"> 常见问题</span>
               </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#merge-k-sorted-lists:d680e8a854a7cbad6d490c445cba2eba">Merge k Sorted Lists</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
               
 
             </div>
             
     	        <div id="body-inner">
                 
-                <h1>希尔排序</h1>
+                <h1>常见问题</h1>
                 
 
 
 
-<p>希尔排序是冲破二次时间屏障的第一批算法。它通过比较相距一定间隔的元素来工作，且各趟比较所用的距离随着算法的进行而减小。所以希尔排序有时候也叫缩减增量排序。</p>
+<h2 id="merge-k-sorted-lists:d680e8a854a7cbad6d490c445cba2eba">Merge k Sorted Lists</h2>
 
-<p>我们还是举一个例子来分析,假设有一个数组 81,99,12,33,43,23,48,76,68,11,25,87,90。每一步，我们都设定一个增量，并根据增量将数组分组，并对每一个分组进行插入排序。</p>
+<p><a href="https://leetcode.com/problems/merge-k-sorted-lists/">leetcode 23题</a></p>
 
-<table>
-<thead>
-<tr>
-<th>运行步骤</th>
-<th>结果</th>
-</tr>
-</thead>
+<pre><code class="language-python">class Solution(object):
+    def mergeKLists(self, lists):
 
-<tbody>
-<tr>
-<td>原始序列</td>
-<td>81  99  12  33  43  23  48  76  68  11  25  87  90</td>
-</tr>
+        from heapq import heappush, heappop, heapreplace, heapify
+        dummy = node = ListNode(0)
+        h = [(n.val, n) for n in lists if n]
+        heapify(h)
+        
+        while h:
+            v, n = h[0]
+            if n.next is None:
+                heappop(h)
+            else:
+                heapreplace(h, (n.next.val, n.next))
+            node.next = n
+            node = node.next
 
-<tr>
-<td>按5为距离</td>
-<td>23  48  12  33  11  25  87  76  68  43  81  99  90</td>
-</tr>
-
-<tr>
-<td>按3为距离</td>
-<td>23  11  12  33  48  25  43  76  68  87  81  99  90</td>
-</tr>
-
-<tr>
-<td>按1为距离</td>
-<td>11  12  23  25  33  43  48  68  76  81  87  90  99</td>
-</tr>
-</tbody>
-</table>
-
-<pre><code class="language-python">def insertSort(l, start, gap):
-    for i in range(start+gap, len(l), gap):
-        currentValue = l[i]
-        pos = i
-        while pos &gt;= gap and l[pos-gap] &gt; currentValue:
-            l[pos] = l[pos - gap]
-            pos -= gap
-        l[pos] = currentValue
-
-def shellSort(l):
-    sublistCount = len(l) / 2
-    while sublistCount&gt;0:
-        for pos in range(sublistCount):
-            insertSort(l, pos, sublistCount)
-        sublistCount = sublistCount / 2
-
-#测试
-import random
-a = [random.random() for i in range(40)]
-print a
-shellSort(a)
-print a
-
+        return dummy.next
 
 </code></pre>
-
-<h2 id="性能分析:d680e8a854a7cbad6d490c445cba2eba">性能分析</h2>
-
-<p>虽然希尔排序编程简单，但是，其运行时间的分析相当复杂。而且不同的增量选择方式对运行时间也有着明显的影响</p>
 
 
       
@@ -636,8 +612,8 @@ print a
     </div>
 
     <div id="navigation">
-        <a class="nav nav-prev" href="/6%e6%8e%92%e5%ba%8f/insertsort"> <i class="fa fa-chevron-left"></i></a>
-        <a class="nav nav-next" href="/6%e6%8e%92%e5%ba%8f/heapsort" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        <a class="nav nav-prev" href="/4%e5%a0%86/binaryheap"> <i class="fa fa-chevron-left"></i></a>
+        <a class="nav nav-next" href="/5%e6%95%a3%e5%88%97" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
     </div>
 
     </section>

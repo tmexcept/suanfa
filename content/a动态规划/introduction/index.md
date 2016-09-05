@@ -1,7 +1,7 @@
 ---
 title: 动态规划
 prev: /a动态规划
-next: /bnp-hard
+
 weight: 5
 ---
 
@@ -116,6 +116,7 @@ class Solution(object):
 
 ```python
 class Solution(object):
+  
     def minPathSum(self, grid):
         m = len(grid)
         n = len(grid[0])
