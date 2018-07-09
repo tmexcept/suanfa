@@ -15,7 +15,7 @@ toc: true
 
 所以，如果两个指针在出发后可以到达同一节点，我们就可以判断这个链表有环。
 
-![circle_detection](/img/ch1/circle.png)
+![circle_detection](/static/img/ch1/circle.png)
 
 ```python
 class Solution(object):
@@ -38,12 +38,38 @@ class Solution(object):
 
         return head
 ```
+```java
+    //对上述中文解释的完整解释与补充
+    // using two pointers, one of them one step at a time. another pointer each take two steps. Suppose the first meet at step k,the length of the Cycle is r. so..2k-k=nr,k=nr
+    // Now, the distance between the start node of list and the start node of cycle is s. the distance between the start of list and the first meeting node is k(the pointer which wake one step at a time waked k steps).the distance between the start node of cycle and the first meeting node is m, so...s=k-m,
+    // s=nr-m=(n-1)r+(r-m),here we takes n = 1..so, using one pointer start from the start node of list, another pointer start from the first meeting node, all of them wake one step at a time, the first time they meeting each other is the start of the cycle.
+    public ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        boolean isCircle = false;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                isCircle = true;
+                break;
+            }
+        }
+        if(!isCircle) return null;
+        slow = head;
+        while(slow != fast){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
+    }
+```
 
 ## 删除当前节点
 [题目来源](https://leetcode.com/problems/delete-node-in-a-linked-list/)
 从前面的小节中我们已经得知，想要删除一个节点，需要把这个节点前驱节点的next指针知道其后面的节点。但是如下图，我们要删除"hello"节点，却不知道它的前驱节点的。笨办法是从链表头开始遍历找到待删除的节点。好的办法是，我们把当前节点的后继节点的数据域复制到当前节点，然后删掉后继节点。还是以下图为例，我们把第二个节点的数据域复制到第一个节点，然后删除第二个节点。
 
-![delete_curr](/img/ch1/delete_curr.png)
+![delete_curr](/static/img/ch1/delete_curr.png)
 
 ```python
 class Solution(object):
@@ -59,7 +85,7 @@ class Solution(object):
 
 以下图为例，我们想删除链表的倒数第二个节点。首先在表头设定两个指针p1,p2，并让p2先走两步，然后两个指针一同出发直到p2到达表尾。然后删除p1的后继节点（就是倒数第二个节点）。
 
-![delete_from_end](/img/ch1/delete_from_end.png)
+![delete_from_end](/static/img/ch1/delete_from_end.png)
 
 ```python
 class Solution(object):
@@ -113,7 +139,7 @@ class Solution(object):
 [题目来源](https://leetcode.com/problems/reverse-linked-list/)
 
 一图胜千言。如下图，我们有一个四个节点的单链表，我们通过如下八步，并使用了三个指针来将其反转。其中2-4步和5-7步都可以被放入一个循环中。
-![reverse](/img/ch1/reverse.png)
+![reverse](/static/img/ch1/reverse.png)
 ```python
 class Solution(object):
 
