@@ -28,7 +28,39 @@ class Solution(object):
                 return False
         return stack == []
 ```
-
+```java
+    //java实现
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for (char c : s.toCharArray()) {
+            if (c == '(')
+                stack.push(')');
+            else if (c == '{')
+                stack.push('}');
+            else if (c == '[')
+                stack.push(']');
+            else if (stack.isEmpty() || stack.pop() != c)
+                return false;
+        }
+        return stack.isEmpty();
+    }
+    
+    //有效的括号组中包含有其他字符的时候
+    public boolean isValid2(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push(')');
+            } else if (c == '{')
+                stack.push('}');
+            else if (c == '[')
+                stack.push(']');
+            else if (stack.elementAt(0) == c)
+                stack.pop();
+        }
+        return stack.isEmpty();
+    }
+```
 ## basic calculator
 [leetcode 224题](https://leetcode.com/problems/basic-calculator/)
 题目要求实现一个能够计算公式值的函数。比如输入"1 + 1"返回2，输入"(1-(4-5+2)-3)+(6+8)"返回11，只需要支持加法减法和括号就可以了。
@@ -59,4 +91,41 @@ class Solution(object):
                 res += stack.pop()
                 num = 0
         return res + num*sign
+```
+```java
+    public int calculate(String s) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int result = 0;
+        int number = 0;
+        int sign = 1;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(Character.isDigit(c)){
+                number = c - '0';
+            }else if(c == '+'){
+                result += sign * number;
+                number = 0;
+                sign = 1;
+            }else if(c == '-'){
+                result += sign * number;
+                number = 0;
+                sign = -1;
+            }else if(c == '('){
+                //we push the result first, then sign;
+                stack.push(result);
+                stack.push(sign);
+                //reset the sign and result for the value in the parenthesis
+                sign = 1;
+                result = 0;
+            }else if(c == ')'){
+                result += sign * number;
+                number = 0;
+                result *= stack.pop();    //stack.pop() is the sign before the parenthesis
+                result += stack.pop();   //stack.pop() now is the result calculated before the parenthesis
+
+            }
+        }
+        if(number != 0) result += sign * number;
+        return result;
+    }
 ```
